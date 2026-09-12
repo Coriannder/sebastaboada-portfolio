@@ -17,6 +17,7 @@ import {
 } from 'lucide-react';
 import { GithubIcon, LinkedinIcon } from '@/components/ui/Icons';
 import { Typewriter } from '@/components/ui/Typewriter';
+import profilePic from '@/../public/images/profile.jpg';
 
 export function Hero() {
   const { language, t } = useLanguage();
@@ -121,12 +122,14 @@ export function Hero() {
               {/* Photo with clean minimal frame */}
               <div className="w-36 h-36 sm:w-44 sm:h-44 shrink-0 rounded-2xl overflow-hidden relative shadow-sm border border-zinc-200/80 dark:border-zinc-800 transition-transform duration-300 group-hover:scale-[1.02]">
                 <Image
-                  src="/images/profile.jpg"
+                  src={profilePic}
                   alt="Sebastián Taboada"
                   fill
-                  sizes="(max-width: 768px) 160px, 192px"
+                  placeholder="blur"
+                  quality={95}
+                  sizes="(max-width: 768px) 384px, 450px"
                   priority
-                  className="object-cover object-[50%_5%] scale-110 origin-top"
+                  className="object-cover object-[50%_18%] scale-[1.5] translate-y-1.5 origin-[50%_22%]"
                 />
               </div>
             </div>
