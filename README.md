@@ -27,7 +27,7 @@
    ```bash
    npm run dev
    ```
-   Open [http://localhost:3000](http://localhost:3000) to view the portfolio.
+   Open [http://localhost:3005](http://localhost:3005) to view the portfolio.
 
 3. **Build for production:**
    ```bash
