@@ -191,13 +191,13 @@ export function Hero() {
                     <span className="text-accent">const</span> <span className="text-zinc-100">stack</span> = &#123;
                   </p>
                   <p className="pl-4">
-                    <span className="text-zinc-400">frontend:</span> [<span className="text-zinc-200">&quot;React 19&quot;</span>, <span className="text-zinc-200">&quot;Next.js 15&quot;</span>, <span className="text-zinc-200">&quot;Tailwind CSS&quot;</span>],
+                    <span className="text-zinc-400">frontend:</span> [<span className="text-zinc-200">&quot;Next.js 15&quot;</span>, <span className="text-zinc-200">&quot;React 19&quot;</span>, <span className="text-zinc-200">&quot;TanStack Query&quot;</span>, <span className="text-zinc-200">&quot;Radix UI&quot;</span>],
                   </p>
                   <p className="pl-4">
-                    <span className="text-zinc-400">backend:</span> [<span className="text-zinc-200">&quot;Node.js&quot;</span>, <span className="text-zinc-200">&quot;Express&quot;</span>, <span className="text-zinc-200">&quot;MySQL&quot;</span>, <span className="text-zinc-200">&quot;MongoDB&quot;</span>],
+                    <span className="text-zinc-400">backend:</span> [<span className="text-zinc-200">&quot;Node.js&quot;</span>, <span className="text-zinc-200">&quot;Spec-Driven&quot;</span>, <span className="text-zinc-200">&quot;Zod&quot;</span>, <span className="text-zinc-200">&quot;MySQL&quot;</span>],
                   </p>
                   <p className="pl-4">
-                    <span className="text-zinc-400">ai_agents:</span> [<span className="text-accent">&quot;Model Context Protocol (MCP)&quot;</span>, <span className="text-accent">&quot;Automations&quot;</span>]
+                    <span className="text-zinc-400">testing_and_ai:</span> [<span className="text-accent">&quot;Jest/Supertest (100% cov)&quot;</span>, <span className="text-accent">&quot;MCP Servers&quot;</span>]
                   </p>
                   <p>&#125;;</p>
                 </div>
@@ -208,15 +208,15 @@ export function Hero() {
                   <p className="text-accent font-semibold">## Engineering Principles</p>
                   <p className="flex items-center gap-2">
                     <span className="text-accent">✔</span>
+                    <span>Spec-Driven Development (OpenAPI contracts + runtime Zod)</span>
+                  </p>
+                  <p className="flex items-center gap-2">
+                    <span className="text-accent">✔</span>
                     <span>Clean Architecture (3 Layers: Controller, Service, Repository)</span>
                   </p>
                   <p className="flex items-center gap-2">
                     <span className="text-accent">✔</span>
-                    <span>Strict Type-Safety with TypeScript & Zod validation</span>
-                  </p>
-                  <p className="flex items-center gap-2">
-                    <span className="text-accent">✔</span>
-                    <span>Medical-grade quality assurance & Automated Testing</span>
+                    <span>100% Test Coverage on critical endpoints (Jest &amp; Supertest)</span>
                   </p>
                 </div>
               )}
@@ -248,13 +248,15 @@ export function Hero() {
               </div>
               <div className="flex flex-wrap gap-1.5">
                 {[
-                  'React & Next.js',
+                  'React & Next.js 15',
                   'TypeScript',
-                  'Tailwind CSS',
+                  'Spec-Driven & Zod',
+                  'TanStack Query',
+                  'Radix UI',
                   'Node.js & Express',
                   'Clean Architecture',
                   'MySQL / MariaDB',
-                  'Docker',
+                  'Jest & Supertest',
                   'MCP & AI Agents',
                 ].map((tech) => (
                   <span

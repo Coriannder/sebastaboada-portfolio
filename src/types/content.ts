@@ -84,7 +84,7 @@ export interface Dictionary {
     subtitle: string;
     items: ExperienceItem[];
     educationTitle: string;
-    education: EducationItem;
+    education: EducationItem[];
   };
   contact: {
     badge: string;

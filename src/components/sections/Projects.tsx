@@ -25,8 +25,8 @@ export function Projects() {
           </p>
         </div>
 
-        {/* List of projects */}
-        <div className="space-y-10">
+        {/* Projects List (Single column) */}
+        <div className="space-y-6">
           {t.projects.items.map((project, idx) => (
             <ProjectCard key={project.id} project={project} index={idx} />
           ))}

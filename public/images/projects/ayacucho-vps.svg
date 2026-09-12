@@ -1,0 +1,169 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" width="100%" height="100%">
+  <defs>
+    <!-- Background Gradients -->
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#090a0f"/>
+      <stop offset="100%" stop-color="#11131a"/>
+    </linearGradient>
+
+    <!-- Emerald Glow -->
+    <radialGradient id="emeraldGlow" cx="60%" cy="30%" r="55%">
+      <stop offset="0%" stop-color="#10b981" stop-opacity="0.18"/>
+      <stop offset="100%" stop-color="#10b981" stop-opacity="0"/>
+    </radialGradient>
+
+    <!-- Card Background -->
+    <linearGradient id="cardGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#181a24" stop-opacity="0.9"/>
+      <stop offset="100%" stop-color="#12131b" stop-opacity="0.95"/>
+    </linearGradient>
+
+    <!-- Subtle Grid Pattern -->
+    <pattern id="grid" width="24" height="24" patternUnits="userSpaceOnUse">
+      <path d="M 24 0 L 0 0 0 24" fill="none" stroke="#ffffff" stroke-width="1" stroke-opacity="0.03"/>
+    </pattern>
+  </defs>
+
+  <!-- Canvas Background -->
+  <rect width="800" height="500" fill="url(#bgGrad)"/>
+  <rect width="800" height="500" fill="url(#grid)"/>
+  <rect width="800" height="500" fill="url(#emeraldGlow)"/>
+
+  <!-- Network / Mesh nodes in background -->
+  <g opacity="0.25">
+    <circle cx="710" cy="90" r="4" fill="#10b981"/>
+    <circle cx="620" cy="140" r="3" fill="#10b981"/>
+    <circle cx="750" cy="180" r="3.5" fill="#10b981"/>
+    <line x1="710" y1="90" x2="620" y2="140" stroke="#10b981" stroke-width="1" stroke-dasharray="3,3"/>
+    <line x1="710" y1="90" x2="750" y2="180" stroke="#10b981" stroke-width="1" stroke-dasharray="3,3"/>
+    <line x1="620" y1="140" x2="750" y2="180" stroke="#10b981" stroke-width="1" stroke-dasharray="3,3"/>
+  </g>
+
+  <!-- Window Container -->
+  <rect x="40" y="35" width="720" height="430" rx="14" fill="url(#cardGrad)" stroke="#272a38" stroke-width="1.2"/>
+
+  <!-- Header Bar -->
+  <path d="M 40 49 Q 40 35 54 35 L 746 35 Q 760 35 760 49 L 760 78 L 40 78 Z" fill="#13151f" stroke="#272a38" stroke-width="1.2"/>
+  
+  <!-- Window Controls -->
+  <circle cx="66" cy="56" r="5" fill="#ef4444" opacity="0.8"/>
+  <circle cx="82" cy="56" r="5" fill="#f59e0b" opacity="0.8"/>
+  <circle cx="98" cy="56" r="5" fill="#10b981" opacity="0.8"/>
+
+  <!-- Title -->
+  <text x="122" y="60" font-family="monospace" font-size="12" fill="#94a3b8" font-weight="600">
+    ayacucho-vps // ubuntu-24.04-lts // docker-mesh
+  </text>
+
+  <!-- Header Status Badges (Right side) -->
+  <g transform="translate(560, 48)">
+    <rect width="88" height="18" rx="4" fill="#10b981" fill-opacity="0.15" stroke="#10b981" stroke-opacity="0.4" stroke-width="1"/>
+    <circle cx="10" cy="9" r="3" fill="#10b981"/>
+    <text x="18" y="13" font-family="monospace" font-size="9" fill="#10b981" font-weight="bold">TAILSCALE</text>
+  </g>
+
+  <g transform="translate(660, 48)">
+    <rect width="84" height="18" rx="4" fill="#0284c7" fill-opacity="0.15" stroke="#0284c7" stroke-opacity="0.4" stroke-width="1"/>
+    <circle cx="10" cy="9" r="3" fill="#38bdf8"/>
+    <text x="18" y="13" font-family="monospace" font-size="9" fill="#38bdf8" font-weight="bold">DOCKER OK</text>
+  </g>
+
+  <!-- Two Column Content Inside Window -->
+
+  <!-- Left Column: Terminal Daemon Output (Docker + Tailscale) -->
+  <g transform="translate(65, 100)">
+    <text x="0" y="15" font-family="monospace" font-size="12" fill="#64748b">$ tailscale status</text>
+    <text x="0" y="36" font-family="monospace" font-size="11" fill="#10b981">● 100.84.21.109  ayacucho-vps  linux  active; direct</text>
+
+    <text x="0" y="70" font-family="monospace" font-size="12" fill="#64748b">$ docker compose ps --services</text>
+    
+    <!-- Service Pill 1 -->
+    <g transform="translate(0, 85)">
+      <rect width="300" height="32" rx="6" fill="#1e2230" stroke="#2d3345" stroke-width="1"/>
+      <circle cx="14" cy="16" r="3.5" fill="#10b981"/>
+      <text x="26" y="20" font-family="monospace" font-size="11" fill="#e2e8f0" font-weight="600">pr-reviewer-bot</text>
+      <text x="210" y="20" font-family="monospace" font-size="10" fill="#10b981">Up (daemon)</text>
+    </g>
+
+    <!-- Service Pill 2 -->
+    <g transform="translate(0, 125)">
+      <rect width="300" height="32" rx="6" fill="#1e2230" stroke="#2d3345" stroke-width="1"/>
+      <circle cx="14" cy="16" r="3.5" fill="#10b981"/>
+      <text x="26" y="20" font-family="monospace" font-size="11" fill="#e2e8f0" font-weight="600">hermes-ai-gateway</text>
+      <text x="210" y="20" font-family="monospace" font-size="10" fill="#10b981">Up (healthy)</text>
+    </g>
+
+    <!-- Service Pill 3 -->
+    <g transform="translate(0, 165)">
+      <rect width="300" height="32" rx="6" fill="#1e2230" stroke="#2d3345" stroke-width="1"/>
+      <circle cx="14" cy="16" r="3.5" fill="#10b981"/>
+      <text x="26" y="20" font-family="monospace" font-size="11" fill="#e2e8f0" font-weight="600">tailscale-mesh-node</text>
+      <text x="210" y="20" font-family="monospace" font-size="10" fill="#10b981">Up (tunnel)</text>
+    </g>
+
+    <g transform="translate(0, 220)">
+      <text x="0" y="15" font-family="monospace" font-size="11" fill="#64748b">Uptime: 48 days 14 hrs | Memory: 1.8GB / 8GB</text>
+    </g>
+  </g>
+
+  <!-- Divider line -->
+  <line x1="400" y1="95" x2="400" y2="440" stroke="#222533" stroke-width="1.2" stroke-dasharray="4,4"/>
+
+  <!-- Right Column: GitHub PR Reviewer Bot in Action -->
+  <g transform="translate(425, 100)">
+    <!-- PR Notification Card -->
+    <rect width="310" height="315" rx="10" fill="#151722" stroke="#2a2e40" stroke-width="1"/>
+    
+    <!-- PR Card Header -->
+    <rect width="310" height="42" rx="10" fill="#1a1d2c"/>
+    <path d="M 0 35 L 310 35 L 310 42 L 0 42 Z" fill="#1a1d2c"/>
+    <text x="14" y="26" font-family="monospace" font-size="12" fill="#f8fafc" font-weight="bold">
+      GitHub Webhook: PR #28
+    </text>
+    
+    <!-- Bot Avatar and Tag -->
+    <g transform="translate(14, 55)">
+      <rect width="28" height="28" rx="6" fill="#10b981" fill-opacity="0.2" stroke="#10b981" stroke-width="1"/>
+      <text x="7" y="19" font-family="monospace" font-size="14" fill="#10b981">🤖</text>
+      <text x="36" y="14" font-family="monospace" font-size="11" fill="#e2e8f0" font-weight="600">Autonomous Code Reviewer</text>
+      <text x="36" y="26" font-family="monospace" font-size="10" fill="#64748b">bot · via OpenRouter LLM</text>
+    </g>
+
+    <!-- Audit Results Box -->
+    <g transform="translate(14, 98)">
+      <rect width="282" height="155" rx="8" fill="#0f1118" stroke="#232737" stroke-width="1"/>
+      
+      <text x="12" y="22" font-family="monospace" font-size="11" fill="#94a3b8" font-weight="bold">Auditing diff: +182 / -34 lines</text>
+      <line x1="12" y1="32" x2="270" y2="32" stroke="#232737" stroke-width="1"/>
+
+      <!-- Audit Checks -->
+      <g transform="translate(12, 50)">
+        <text x="0" y="0" font-family="monospace" font-size="11" fill="#10b981">✔ Security:</text>
+        <text x="80" y="0" font-family="monospace" font-size="10.5" fill="#cbd5e1">0 secret leaks / AST safe</text>
+      </g>
+
+      <g transform="translate(12, 75)">
+        <text x="0" y="0" font-family="monospace" font-size="11" fill="#10b981">✔ Contracts:</text>
+        <text x="85" y="0" font-family="monospace" font-size="10.5" fill="#cbd5e1">Zod schema integrity ok</text>
+      </g>
+
+      <g transform="translate(12, 100)">
+        <text x="0" y="0" font-family="monospace" font-size="11" fill="#10b981">✔ Coverage:</text>
+        <text x="85" y="0" font-family="monospace" font-size="10.5" fill="#cbd5e1">Supertest tests included</text>
+      </g>
+
+      <g transform="translate(12, 125)">
+        <text x="0" y="0" font-family="monospace" font-size="11" fill="#38bdf8">ℹ Feedback:</text>
+        <text x="85" y="0" font-family="monospace" font-size="10.5" fill="#94a3b8">Clean 3-layer architecture</text>
+      </g>
+    </g>
+
+    <!-- Bottom Status Bar -->
+    <g transform="translate(14, 272)">
+      <rect width="282" height="30" rx="6" fill="#10b981" fill-opacity="0.1" stroke="#10b981" stroke-opacity="0.3" stroke-width="1"/>
+      <text x="50" y="19" font-family="monospace" font-size="10.5" fill="#10b981" font-weight="bold">
+        STATUS: PR AUDIT PASSED [READY]
+      </text>
+    </g>
+  </g>
+</svg>

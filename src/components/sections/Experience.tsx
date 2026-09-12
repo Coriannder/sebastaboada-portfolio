@@ -85,28 +85,40 @@ export function Experience() {
           ))}
         </div>
 
-        {/* Education Highlight Card */}
+        {/* Education Highlight Section */}
         <div className="mt-16 pt-8 border-t border-zinc-200/80 dark:border-zinc-800/80">
-          <div className="rounded-2xl p-6 sm:p-8 border border-zinc-200/90 dark:border-zinc-800/90 bg-white dark:bg-zinc-900/40 shadow-2xs flex flex-col md:flex-row items-start gap-6">
-            <div className="w-12 h-12 rounded-xl bg-accent/10 border border-accent/20 flex items-center justify-center text-accent shrink-0">
-              <GraduationCap className="w-6 h-6" />
+          <div className="flex items-center gap-2 mb-6">
+            <div className="w-9 h-9 rounded-lg bg-accent/10 border border-accent/20 flex items-center justify-center text-accent">
+              <GraduationCap className="w-5 h-5" />
             </div>
-            <div className="space-y-2">
-              <div className="flex flex-wrap items-center gap-2 text-xs font-mono text-zinc-400">
-                <span className="text-accent font-semibold">{t.experience.education.period}</span>
-                <span>•</span>
-                <span>{t.experience.education.location}</span>
+            <h3 className="text-xl font-bold tracking-tight text-zinc-900 dark:text-zinc-100">
+              {t.experience.educationTitle}
+            </h3>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+            {t.experience.education.map((edu, eIdx) => (
+              <div
+                key={eIdx}
+                className="rounded-2xl p-5 border border-zinc-200/90 dark:border-zinc-800/90 bg-white dark:bg-zinc-900/40 shadow-2xs flex flex-col justify-between hover:border-zinc-300 dark:hover:border-zinc-700 transition-colors"
+              >
+                <div className="space-y-2">
+                  <div className="flex flex-wrap items-center justify-between text-[11px] font-mono text-zinc-400">
+                    <span className="text-accent font-semibold">{edu.period}</span>
+                    <span>{edu.location}</span>
+                  </div>
+                  <h4 className="text-base font-bold text-zinc-900 dark:text-zinc-100">
+                    {edu.degree}
+                  </h4>
+                  <p className="text-xs font-medium text-accent font-mono">
+                    {edu.institution}
+                  </p>
+                  <p className="text-xs text-zinc-600 dark:text-zinc-300 leading-relaxed pt-1">
+                    {edu.details}
+                  </p>
+                </div>
               </div>
-              <h3 className="text-lg sm:text-xl font-bold text-zinc-900 dark:text-zinc-100">
-                {t.experience.education.degree}
-              </h3>
-              <p className="text-sm font-medium text-accent">
-                {t.experience.education.institution}
-              </p>
-              <p className="text-xs sm:text-sm text-zinc-600 dark:text-zinc-300 leading-relaxed pt-1">
-                {t.experience.education.details}
-              </p>
-            </div>
+            ))}
           </div>
         </div>
       </div>
