@@ -18,23 +18,23 @@ export function Hero() {
         <div className="flex flex-col md:flex-row items-center md:items-start gap-8 md:gap-12">
           {/* Profile Picture */}
           <div className="relative group shrink-0">
-            <div className="w-36 h-36 sm:w-44 sm:h-44 rounded-2xl overflow-hidden p-1 bg-gradient-to-b from-zinc-300 to-zinc-100 dark:from-zinc-700 dark:to-zinc-900 shadow-xl transition-transform duration-300 group-hover:scale-[1.02]">
-              <div className="w-full h-full rounded-xl overflow-hidden relative">
+            <div className="w-36 h-36 sm:w-44 sm:h-44 rounded-full overflow-hidden p-1 bg-gradient-to-b from-zinc-300 to-zinc-100 dark:from-zinc-700 dark:to-zinc-900 shadow-xl transition-transform duration-300 group-hover:scale-[1.02]">
+              <div className="w-full h-full rounded-full overflow-hidden relative">
                 <Image
                   src="/images/profile.jpg"
                   alt="Sebastián Taboada"
                   fill
                   sizes="(max-width: 768px) 144px, 176px"
                   priority
-                  className="object-cover object-center"
+                  className="object-cover object-[50%_5%] scale-110 origin-top transition-transform duration-300"
                 />
               </div>
             </div>
             {/* Status indicator on avatar */}
-            <div className="absolute -bottom-2 -right-2 bg-white dark:bg-zinc-900 p-1 rounded-full shadow-md border border-zinc-200 dark:border-zinc-800">
-              <span className="relative flex h-4 w-4">
+            <div className="absolute bottom-1 right-1 bg-white dark:bg-zinc-900 p-1 rounded-full shadow-md border border-zinc-200 dark:border-zinc-800">
+              <span className="relative flex h-3.5 w-3.5">
                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
-                <span className="relative inline-flex rounded-full h-4 w-4 bg-emerald-500"></span>
+                <span className="relative inline-flex rounded-full h-3.5 w-3.5 bg-emerald-500"></span>
               </span>
             </div>
           </div>
