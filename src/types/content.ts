@@ -53,6 +53,7 @@ export interface Dictionary {
     greeting: string;
     name: string;
     title: string;
+    roles: string[];
     subtitle: string;
     ctaProjects: string;
     ctaContact: string;

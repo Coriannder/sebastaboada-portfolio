@@ -57,7 +57,7 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
             ) : null}
           </div>
 
-          <p className="mt-2 text-xs sm:text-sm font-medium text-sky-600 dark:text-sky-400 font-mono">
+          <p className="mt-2 text-xs sm:text-sm font-medium text-accent font-mono">
             {project.tagline}
           </p>
 
@@ -76,7 +76,7 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
               </p>
             </div>
             <div>
-              <h4 className="text-xs font-mono font-semibold uppercase text-sky-600 dark:text-sky-400 tracking-wider mb-1">
+              <h4 className="text-xs font-mono font-semibold uppercase text-accent tracking-wider mb-1">
                 {t.projects.solutionLabel}
               </h4>
               <p className="text-xs text-zinc-600 dark:text-zinc-300 leading-relaxed">
@@ -93,7 +93,7 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
             <ul className="space-y-1.5">
               {project.impact.map((point, i) => (
                 <li key={i} className="flex items-start gap-2 text-xs sm:text-sm text-zinc-700 dark:text-zinc-300">
-                  <CheckCircle className="w-3.5 h-3.5 text-emerald-500 shrink-0 mt-0.5" />
+                  <CheckCircle className="w-3.5 h-3.5 text-accent shrink-0 mt-0.5" />
                   <span>{point}</span>
                 </li>
               ))}

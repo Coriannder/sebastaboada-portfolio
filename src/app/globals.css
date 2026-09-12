@@ -2,15 +2,30 @@
 
 @custom-variant dark (&:where(.dark, .dark *));
 
+@theme {
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent-subtle: var(--accent-subtle);
+  --color-accent-border: var(--accent-border);
+}
+
 :root {
-  --background: #fdfdfd;
+  --background: #fafafa;
   --foreground: #09090b;
   --muted: #71717a;
   --muted-bg: #f4f4f5;
   --border: #e4e4e7;
   --card: #ffffff;
   --card-border: #e4e4e7;
-  --accent: #0284c7;
+
+  /* ========================================================
+     COLOR DE ACENTO MONOCROMÁTICO (Un solo color en todo el sitio)
+     Para cambiarlo en el futuro, sólo editás estos valores:
+     ======================================================== */
+  --accent: #059669; /* Verde esmeralda */
+  --accent-foreground: #ffffff;
+  --accent-subtle: #ecfdf5;
+  --accent-border: #a7f3d0;
 }
 
 .dark {
@@ -21,7 +36,14 @@
   --border: #27272a;
   --card: #121215;
   --card-border: #27272a;
-  --accent: #38bdf8;
+
+  /* ========================================================
+     COLOR DE ACENTO MONOCROMÁTICO (Modo oscuro)
+     ======================================================== */
+  --accent: #10b981; /* Verde esmeralda vibrante */
+  --accent-foreground: #09090b;
+  --accent-subtle: rgba(16, 185, 129, 0.1);
+  --accent-border: rgba(16, 185, 129, 0.25);
 }
 
 body {

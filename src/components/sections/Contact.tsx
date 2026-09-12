@@ -35,7 +35,7 @@ export function Contact() {
         {/* Header */}
         <div className="max-w-2xl mb-12">
           <div className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md text-xs font-mono font-medium bg-zinc-100 dark:bg-zinc-800 text-zinc-700 dark:text-zinc-300 mb-3 border border-zinc-200 dark:border-zinc-700">
-            <MessageSquare className="w-3.5 h-3.5 text-sky-500" />
+            <MessageSquare className="w-3.5 h-3.5 text-accent" />
             <span>{t.contact.badge}</span>
           </div>
           <h2 className="text-2xl sm:text-3xl font-bold tracking-tight text-zinc-900 dark:text-zinc-100">
@@ -51,7 +51,7 @@ export function Contact() {
           {/* Card 1: Email Copy Action */}
           <div className="p-6 rounded-2xl border border-zinc-200/90 dark:border-zinc-800/90 bg-white dark:bg-zinc-900/40 shadow-xs flex flex-col justify-between space-y-6">
             <div className="space-y-3">
-              <div className="w-10 h-10 rounded-xl bg-sky-50 dark:bg-sky-950/60 border border-sky-200/70 dark:border-sky-800/60 flex items-center justify-center text-sky-600 dark:text-sky-400">
+              <div className="w-10 h-10 rounded-xl bg-accent/10 border border-accent/20 flex items-center justify-center text-accent">
                 <Mail className="w-5 h-5" />
               </div>
               <h3 className="text-base font-bold text-zinc-900 dark:text-zinc-100">
@@ -74,7 +74,7 @@ export function Contact() {
                 >
                   {copied ? (
                     <>
-                      <Check className="w-3.5 h-3.5 text-emerald-400 dark:text-emerald-600" />
+                      <Check className="w-3.5 h-3.5 text-accent" />
                       <span>{t.contact.copied}</span>
                     </>
                   ) : (
@@ -89,7 +89,7 @@ export function Contact() {
               {/* Direct mailto link fallback */}
               <a
                 href={`mailto:${email}`}
-                className="block text-center text-xs text-sky-600 dark:text-sky-400 hover:underline font-mono"
+                className="block text-center text-xs text-accent hover:underline font-mono"
               >
                 O abrir en tu cliente de correo predeterminado →
               </a>
@@ -115,7 +115,7 @@ export function Contact() {
                   rel="noopener noreferrer"
                   className="flex items-center justify-center gap-2 p-2.5 rounded-xl border border-zinc-200 dark:border-zinc-800 hover:border-zinc-300 dark:hover:border-zinc-700 bg-zinc-50/50 dark:bg-zinc-900/80 text-xs font-semibold text-zinc-800 dark:text-zinc-200 hover:bg-zinc-100 dark:hover:bg-zinc-800 transition-colors shadow-2xs"
                 >
-                  <FileDown className="w-4 h-4 text-sky-500" />
+                  <FileDown className="w-4 h-4 text-accent" />
                   <span>{t.contact.downloadEs}</span>
                 </a>
                 <a
@@ -124,7 +124,7 @@ export function Contact() {
                   rel="noopener noreferrer"
                   className="flex items-center justify-center gap-2 p-2.5 rounded-xl border border-zinc-200 dark:border-zinc-800 hover:border-zinc-300 dark:hover:border-zinc-700 bg-zinc-50/50 dark:bg-zinc-900/80 text-xs font-semibold text-zinc-800 dark:text-zinc-200 hover:bg-zinc-100 dark:hover:bg-zinc-800 transition-colors shadow-2xs"
                 >
-                  <FileDown className="w-4 h-4 text-sky-500" />
+                  <FileDown className="w-4 h-4 text-accent" />
                   <span>{t.contact.downloadEn}</span>
                 </a>
               </div>
@@ -152,7 +152,7 @@ export function Contact() {
                     rel="noopener noreferrer"
                     className="inline-flex items-center gap-1.5 px-3 py-1 text-xs font-medium rounded-lg border border-zinc-200 dark:border-zinc-800 hover:bg-zinc-100 dark:hover:bg-zinc-800 text-zinc-700 dark:text-zinc-300 transition-colors"
                   >
-                    <LinkedinIcon className="w-3.5 h-3.5 text-sky-600" />
+                    <LinkedinIcon className="w-3.5 h-3.5 text-accent" />
                     <span>LinkedIn</span>
                   </a>
                 </div>
@@ -164,7 +164,7 @@ export function Contact() {
                   <span>{t.contact.locationValue}</span>
                 </div>
                 <div className="flex items-center gap-1.5">
-                  <Globe2 className="w-3 h-3 text-emerald-500" />
+                  <Globe2 className="w-3 h-3 text-accent" />
                   <span>{t.contact.availabilityValue}</span>
                 </div>
               </div>

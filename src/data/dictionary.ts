@@ -14,8 +14,15 @@ export const dictionary: Record<Language, Dictionary> = {
       greeting: 'Hola, soy',
       name: 'Sebastián Taboada',
       title: 'Biomedical Engineer & Full Stack Developer',
+      roles: [
+        'Full Stack Developer',
+        'Frontend & Modern UI (React / Next.js)',
+        'Backend & Clean Architecture (Node.js)',
+        'AI Agents & MCP Integrator',
+        'Biomedical Engineer',
+      ],
       subtitle:
-        'Combino la precisión analítica de la bioingeniería con el desarrollo de software moderno: APIs robustas de grado médico, arquitecturas limpias y agentes de IA autónomos con Model Context Protocol (MCP).',
+        'Desarrollador Full Stack con base en bioingeniería. Construyo soluciones web completas: interfaces interactivas y modernas en React/Next.js, APIs robustas con Clean Architecture e integración de agentes de IA con MCP.',
       ctaProjects: 'Explorar Proyectos',
       ctaContact: 'Contactar',
       ctaResume: 'Descargar CV',
@@ -257,8 +264,15 @@ export const dictionary: Record<Language, Dictionary> = {
       greeting: 'Hi, I am',
       name: 'Sebastián Taboada',
       title: 'Biomedical Engineer & Full Stack Developer',
+      roles: [
+        'Full Stack Developer',
+        'Frontend & Modern UI (React / Next.js)',
+        'Backend & Clean Architecture (Node.js)',
+        'AI Agents & MCP Integrator',
+        'Biomedical Engineer',
+      ],
       subtitle:
-        'Bridging biomedical analytical rigor with modern software engineering: medical-grade resilient APIs, clean 3-tier architectures, and autonomous AI agents powered by Model Context Protocol (MCP).',
+        'Full Stack Developer with a biomedical background. Building end-to-end web applications: modern responsive interfaces in React/Next.js, resilient backend APIs with Clean Architecture, and autonomous AI agents with MCP.',
       ctaProjects: 'Explore Projects',
       ctaContact: 'Get in Touch',
       ctaResume: 'Download Resume',

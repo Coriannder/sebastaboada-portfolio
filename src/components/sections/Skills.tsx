@@ -29,7 +29,7 @@ export function Skills() {
         {/* Section Header */}
         <div className="max-w-2xl mb-12">
           <div className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md text-xs font-mono font-medium bg-zinc-100 dark:bg-zinc-800 text-zinc-700 dark:text-zinc-300 mb-3 border border-zinc-200 dark:border-zinc-700">
-            <Layers className="w-3.5 h-3.5 text-sky-500" />
+            <Layers className="w-3.5 h-3.5 text-accent" />
             <span>{t.skills.badge}</span>
           </div>
           <h2 className="text-2xl sm:text-3xl font-bold tracking-tight text-zinc-900 dark:text-zinc-100">
@@ -53,7 +53,7 @@ export function Skills() {
               >
                 <div>
                   <div className="flex items-center gap-3 mb-3">
-                    <div className="w-9 h-9 rounded-lg bg-sky-50 dark:bg-sky-950/60 border border-sky-200/70 dark:border-sky-800/60 flex items-center justify-center text-sky-600 dark:text-sky-400">
+                    <div className="w-9 h-9 rounded-lg bg-accent/10 border border-accent/20 flex items-center justify-center text-accent">
                       <Icon className="w-4 h-4" />
                     </div>
                     <div>
@@ -70,7 +70,7 @@ export function Skills() {
                   <ul className="space-y-2">
                     {cat.skills.map((skill) => (
                       <li key={skill} className="flex items-start gap-2 text-xs sm:text-sm text-zinc-700 dark:text-zinc-300">
-                        <CheckCircle2 className="w-4 h-4 text-sky-500 shrink-0 mt-0.5" />
+                        <CheckCircle2 className="w-4 h-4 text-accent shrink-0 mt-0.5" />
                         <span className="leading-snug">{skill}</span>
                       </li>
                     ))}
