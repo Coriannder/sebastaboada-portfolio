@@ -1,0 +1,151 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#090a14"/>
+      <stop offset="100%" stop-color="#111322"/>
+    </linearGradient>
+
+    <radialGradient id="indigoGlow" cx="60%" cy="30%" r="55%">
+      <stop offset="0%" stop-color="#6366f1" stop-opacity="0.2"/>
+      <stop offset="100%" stop-color="#6366f1" stop-opacity="0"/>
+    </radialGradient>
+
+    <linearGradient id="cardGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#161828" stop-opacity="0.95"/>
+      <stop offset="100%" stop-color="#10121d" stop-opacity="0.98"/>
+    </linearGradient>
+
+    <pattern id="grid" width="24" height="24" patternUnits="userSpaceOnUse">
+      <path d="M 24 0 L 0 0 0 24" fill="none" stroke="#ffffff" stroke-width="1" stroke-opacity="0.03"/>
+    </pattern>
+  </defs>
+
+  <!-- Background -->
+  <rect width="800" height="500" fill="url(#bgGrad)"/>
+  <rect width="800" height="500" fill="url(#grid)"/>
+  <rect width="800" height="500" fill="url(#indigoGlow)"/>
+
+  <!-- Background Graph Mesh -->
+  <g opacity="0.3">
+    <circle cx="680" cy="80" r="4.5" fill="#818cf8"/>
+    <circle cx="600" cy="130" r="3.5" fill="#38bdf8"/>
+    <circle cx="740" cy="160" r="4" fill="#a855f7"/>
+    <circle cx="670" cy="220" r="3" fill="#818cf8"/>
+    <line x1="680" y1="80" x2="600" y2="130" stroke="#818cf8" stroke-width="1" stroke-dasharray="3,3"/>
+    <line x1="680" y1="80" x2="740" y2="160" stroke="#818cf8" stroke-width="1" stroke-dasharray="3,3"/>
+    <line x1="600" y1="130" x2="670" y2="220" stroke="#38bdf8" stroke-width="1" stroke-dasharray="3,3"/>
+    <line x1="740" y1="160" x2="670" y2="220" stroke="#a855f7" stroke-width="1" stroke-dasharray="3,3"/>
+  </g>
+
+  <!-- Window Container -->
+  <rect x="40" y="35" width="720" height="430" rx="14" fill="url(#cardGrad)" stroke="#272b42" stroke-width="1.2"/>
+
+  <!-- Header Bar -->
+  <path d="M 40 49 Q 40 35 54 35 L 746 35 Q 760 35 760 49 L 760 78 L 40 78 Z" fill="#121422" stroke="#272b42" stroke-width="1.2"/>
+  
+  <!-- Window Controls -->
+  <circle cx="66" cy="56" r="5" fill="#ef4444" opacity="0.8"/>
+  <circle cx="82" cy="56" r="5" fill="#f59e0b" opacity="0.8"/>
+  <circle cx="98" cy="56" r="5" fill="#10b981" opacity="0.8"/>
+
+  <!-- Title -->
+  <text x="122" y="60" font-family="monospace" font-size="12" fill="#94a3b8" font-weight="600">
+    project-codex // healthcare-terminology-graph // react-fastapi-neo4j
+  </text>
+
+  <!-- Badges -->
+  <g transform="translate(540, 48)">
+    <rect width="98" height="18" rx="4" fill="#6366f1" fill-opacity="0.15" stroke="#6366f1" stroke-opacity="0.4" stroke-width="1"/>
+    <circle cx="10" cy="9" r="3" fill="#818cf8"/>
+    <text x="18" y="13" font-family="monospace" font-size="9" fill="#818cf8" font-weight="bold">NEO4J GRAPH</text>
+  </g>
+
+  <g transform="translate(650, 48)">
+    <rect width="94" height="18" rx="4" fill="#10b981" fill-opacity="0.15" stroke="#10b981" stroke-opacity="0.4" stroke-width="1"/>
+    <circle cx="10" cy="9" r="3" fill="#10b981"/>
+    <text x="18" y="13" font-family="monospace" font-size="9" fill="#10b981" font-weight="bold">FASTAPI 200</text>
+  </g>
+
+  <!-- Left Column: Terminal & Translation Pipeline -->
+  <g transform="translate(65, 100)">
+    <text x="0" y="15" font-family="monospace" font-size="12" fill="#64748b">$ codex translate --concept &quot;Arrhythmia&quot;</text>
+    <text x="0" y="36" font-family="monospace" font-size="11" fill="#818cf8">● SNOMED-CT: 698247007 | ICD-10: I49.9 | MeSH: D001145</text>
+
+    <text x="0" y="70" font-family="monospace" font-size="12" fill="#64748b">$ i18next status --languages</text>
+    
+    <!-- Service Pill 1 -->
+    <g transform="translate(0, 85)">
+      <rect width="300" height="32" rx="6" fill="#1b1e30" stroke="#2c324a" stroke-width="1"/>
+      <circle cx="14" cy="16" r="3.5" fill="#818cf8"/>
+      <text x="26" y="20" font-family="monospace" font-size="11" fill="#e2e8f0" font-weight="600">multi-language-ui</text>
+      <text x="205" y="20" font-family="monospace" font-size="10" fill="#818cf8">ES / EN / FR / IT</text>
+    </g>
+
+    <!-- Service Pill 2 -->
+    <g transform="translate(0, 125)">
+      <rect width="300" height="32" rx="6" fill="#1b1e30" stroke="#2c324a" stroke-width="1"/>
+      <circle cx="14" cy="16" r="3.5" fill="#10b981"/>
+      <text x="26" y="20" font-family="monospace" font-size="11" fill="#e2e8f0" font-weight="600">fastapi-ingestion</text>
+      <text x="210" y="20" font-family="monospace" font-size="10" fill="#10b981">Live (async)</text>
+    </g>
+
+    <!-- Service Pill 3 -->
+    <g transform="translate(0, 165)">
+      <rect width="300" height="32" rx="6" fill="#1b1e30" stroke="#2c324a" stroke-width="1"/>
+      <circle cx="14" cy="16" r="3.5" fill="#38bdf8"/>
+      <text x="26" y="20" font-family="monospace" font-size="11" fill="#e2e8f0" font-weight="600">neo4j-ontology-db</text>
+      <text x="210" y="20" font-family="monospace" font-size="10" fill="#38bdf8">Graph Indexed</text>
+    </g>
+
+    <g transform="translate(0, 220)">
+      <text x="0" y="15" font-family="monospace" font-size="11" fill="#64748b">Pipeline: Modular React 19 + TypeScript + Vite 8</text>
+    </g>
+  </g>
+
+  <!-- Divider line -->
+  <line x1="400" y1="95" x2="400" y2="440" stroke="#22273d" stroke-width="1.2" stroke-dasharray="4,4"/>
+
+  <!-- Right Column: Medical Ontology Visual Graph -->
+  <g transform="translate(425, 100)">
+    <rect width="310" height="315" rx="10" fill="#141624" stroke="#292e47" stroke-width="1"/>
+    
+    <!-- Graph Card Header -->
+    <rect width="310" height="42" rx="10" fill="#191c2f"/>
+    <path d="M 0 35 L 310 35 L 310 42 L 0 42 Z" fill="#191c2f"/>
+    <text x="14" y="26" font-family="monospace" font-size="12" fill="#f8fafc" font-weight="bold">
+      Semantic Ontology Node Explorer
+    </text>
+    
+    <!-- Graph Node Visuals -->
+    <g transform="translate(14, 55)">
+      <!-- Central Node -->
+      <rect x="80" y="20" width="120" height="32" rx="6" fill="#6366f1" fill-opacity="0.25" stroke="#6366f1" stroke-width="1.2"/>
+      <text x="95" y="41" font-family="monospace" font-size="11" fill="#e0e7ff" font-weight="bold">Cardiac Arrhythmia</text>
+
+      <!-- Child Node 1 -->
+      <rect x="10" y="90" width="110" height="28" rx="6" fill="#0284c7" fill-opacity="0.2" stroke="#38bdf8" stroke-width="1"/>
+      <text x="22" y="108" font-family="monospace" font-size="10" fill="#bae6fd">SNOMED-CT: 69824</text>
+
+      <!-- Child Node 2 -->
+      <rect x="160" y="90" width="110" height="28" rx="6" fill="#10b981" fill-opacity="0.2" stroke="#10b981" stroke-width="1"/>
+      <text x="175" y="108" font-family="monospace" font-size="10" fill="#a7f3d0">ICD-10: I49.9</text>
+
+      <!-- Child Node 3 -->
+      <rect x="85" y="150" width="110" height="28" rx="6" fill="#8b5cf6" fill-opacity="0.2" stroke="#a78bfa" stroke-width="1"/>
+      <text x="102" y="168" font-family="monospace" font-size="10" fill="#ddd6fe">MeSH: D001145</text>
+
+      <!-- Connection Lines -->
+      <line x1="120" y1="52" x2="65" y2="90" stroke="#818cf8" stroke-width="1.2" stroke-dasharray="3,3"/>
+      <line x1="160" y1="52" x2="215" y2="90" stroke="#818cf8" stroke-width="1.2" stroke-dasharray="3,3"/>
+      <line x1="140" y1="52" x2="140" y2="150" stroke="#818cf8" stroke-width="1.2" stroke-dasharray="3,3"/>
+    </g>
+
+    <!-- Bottom Status Bar -->
+    <g transform="translate(14, 272)">
+      <rect width="282" height="30" rx="6" fill="#6366f1" fill-opacity="0.12" stroke="#6366f1" stroke-opacity="0.35" stroke-width="1"/>
+      <text x="42" y="19" font-family="monospace" font-size="10.5" fill="#a5b4fc" font-weight="bold">
+        ONTOLOGY LINKAGE: 100% SYNCD
+      </text>
+    </g>
+  </g>
+</svg>

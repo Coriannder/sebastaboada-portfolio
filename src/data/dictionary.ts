@@ -39,9 +39,11 @@ export const dictionary: Record<Language, Dictionary> = {
           skills: [
             'TypeScript (2+ años en producción)',
             'Node.js & Express.js',
+            'Socket.io (WebSockets en tiempo real)',
             'Arquitectura Limpia (3 Capas)',
             'Spec-Driven Dev (OpenAPI / Swagger)',
             'Zod (Validación de esquemas en runtime)',
+            'HMAC SHA-256 (Seguridad en Webhooks)',
             'Jest & Supertest (Testing automatizado)',
             'JWT, OAuth2 & RBAC',
           ],
@@ -50,7 +52,7 @@ export const dictionary: Record<Language, Dictionary> = {
           title: 'Bases de Datos & Persistencia',
           description: 'Modelado relacional y documental con integridad y optimización de consultas.',
           skills: [
-            'MySQL (Diseño relacional, transacciones, índices)',
+            'MySQL (Diseño relacional, transacciones ACID, índices)',
             'MongoDB (Modelado de agregación)',
             'Sequelize ORM',
             'Mongoose',
@@ -63,9 +65,11 @@ export const dictionary: Record<Language, Dictionary> = {
             'Model Context Protocol (MCP)',
             'Agentes Autónomos (Hermes Agent / Nous Research)',
             'RAG Local (AnythingLLM)',
+            'OpenRouter API (Multi-LLM Gateway)',
             'Ubuntu Server 24.04 LTS & Docker Compose',
-            'Tailscale Mesh VPN (Redes seguras)',
+            'Tailscale Mesh VPN (Zero-Trust SSH)',
             'GitHub Actions & Webhooks CI/CD',
+            'SonarQube & Husky (Pre-commit hooks)',
           ],
         },
         {
@@ -76,8 +80,11 @@ export const dictionary: Record<Language, Dictionary> = {
             'React 19 & TypeScript',
             'TanStack Query (Sincronización de estado)',
             'Radix UI & Shadcn UI (Accesibilidad)',
-            'Tailwind CSS',
+            'React Hook Form & Zod',
+            'CVA (Design Systems) & Tailwind CSS',
             'Framer Motion',
+            'Vite & react-i18next (i18n)',
+            'React Testing Library (@testing-library/react)',
           ],
         },
         {
@@ -146,6 +153,36 @@ export const dictionary: Record<Language, Dictionary> = {
           isPrivate: true,
         },
         {
+          id: 'grey-box-codex',
+          title: 'GREY-BOX / Project Codex',
+          badge: 'Open Source / Healthcare Data',
+          tagline: 'Plataforma abierta para traducción y estandarización de terminologías médicas.',
+          description:
+            'Plataforma colaborativa de código abierto para la normalización e ingesta de catálogos clínicos internacionales, incorporando exploración multilingüe y grafos ontológicos.',
+          problem:
+            'La dispersión de terminologías médicas internacionales dificulta la interoperabilidad y búsqueda de equivalencias clínicas entre diferentes sistemas de salud.',
+          solution:
+            'Desarrollo de interfaces en React 19 y Vite con internacionalización completa (i18next), refactorizando módulos legacy hacia TypeScript moderno. Integración con backend en FastAPI (Python) y consultas de grafos ontológicos en Neo4j.',
+          impact: [
+            'Refactorización y tipado estricto en TypeScript manteniendo retrocompatibilidad total.',
+            'Terminal de exploración y búsqueda semántica con soporte multi-idioma.',
+            'Colaboración ágil en equipo internacional distribuido y flujos de revisión de código.',
+          ],
+          stack: [
+            'React 19',
+            'Vite',
+            'TypeScript',
+            'i18next',
+            'FastAPI (Python)',
+            'Neo4j',
+            'Docker',
+          ],
+          image: '/images/projects/grey-box-codex.svg',
+          demoUrl: null,
+          codeUrl: 'https://github.com/Coriannder',
+          isPrivate: false,
+        },
+        {
           id: 'jocha-web',
           title: 'Josefina Psicología — Jocha Web',
           badge: 'Frontend Premium & UX',
@@ -178,7 +215,7 @@ export const dictionary: Record<Language, Dictionary> = {
         },
         {
           id: 'pr-reviewer-vps',
-          title: 'Ayacucho VPS & PR Reviewer Bot',
+          title: 'Linux Server & Developer Automation',
           badge: 'DevOps & Agentes Autónomos',
           tagline: 'Infraestructura self-hosted y bot autónomo para auditorías de Pull Requests con LLMs.',
           description:
@@ -186,13 +223,13 @@ export const dictionary: Record<Language, Dictionary> = {
           problem:
             'Falta de un entorno continuo de pruebas y la necesidad de auditar automáticamente cambios de código en repositorios privados sin depender de servicios SaaS costosos.',
           solution:
-            'Implementación de un servidor Linux con Docker Compose y Tailscale Mesh VPN. Desarrollé un bot en Node.js que escucha webhooks de GitHub, extrae el diff del código y utiliza LLMs para reportar problemas de seguridad, estilo y contratos de API.',
+            'Implementación de un servidor Linux nativo en Node.js ESM con seguridad HMAC SHA-256, Docker Compose y Tailscale Mesh VPN. Escucha webhooks de GitHub y utiliza OpenRouter API con LLMs para auditar PRs.',
           impact: [
             'Auditorías automáticas de PRs en minutos con feedback accionable en comentarios de GitHub.',
-            'Acceso seguro sin puertos abiertos a internet mediante malla Tailscale VPN.',
+            'Acceso seguro sin puertos abiertos a internet mediante malla Tailscale VPN (Zero-Trust SSH).',
             'Orquestación de servicios containerizados y gateways de agentes (Hermes Agent).',
           ],
-          stack: ['Ubuntu Server 24.04', 'Docker Compose', 'Node.js', 'GitHub Webhooks', 'Tailscale', 'LLMs', 'OpenRouter'],
+          stack: ['Ubuntu Server 24.04', 'Docker Compose', 'Node.js (ESM)', 'GitHub Webhooks (HMAC)', 'Tailscale SSH', 'OpenRouter API'],
           image: '/images/projects/ayacucho-vps.svg',
           demoUrl: null,
           codeUrl: null,
@@ -238,18 +275,32 @@ export const dictionary: Record<Language, Dictionary> = {
           ],
         },
         {
+          role: 'Frontend & Healthcare Data Engineer (Voluntariado Open Source)',
+          company: 'GREY-BOX / Project Codex',
+          period: '2026 — Presente',
+          location: 'Remoto / Internacional',
+          description:
+            'Contribución a plataforma abierta de estandarización de terminologías y datos clínicos internacionales.',
+          highlights: [
+            'Desarrollo de interfaces con React 19 y Vite con soporte multi-idioma (i18next).',
+            'Refactorización y modernización de código legacy hacia TypeScript bajo mejores prácticas contemporáneas.',
+            'Consumo e integración con endpoints de FastAPI y grafos ontológicos en Neo4j.',
+          ],
+          skills: ['React 19', 'Vite', 'TypeScript', 'i18next', 'FastAPI', 'Neo4j', 'Docker'],
+        },
+        {
           role: 'DevOps, Self-Hosting & Agent Infrastructure',
-          company: 'Ayacucho VPS & Home-Lab',
-          period: '2024 — Presente',
+          company: 'Linux Server Infrastructure & Developer Automation',
+          period: '2026 — Presente',
           location: 'Tucumán, Argentina',
           description:
             'Diseño y mantenimiento de infraestructura de servidores y automatizaciones con agentes inteligentes.',
           highlights: [
-            'Despliegue del bot autónomo de revisión de Pull Requests conectado a webhooks de GitHub.',
-            'Configuración de túneles seguros y malla Tailscale VPN para acceso remoto y despliegues continuos.',
-            'Integración de pipelines RAG locales y servidores de herramientas para modelos de lenguaje.',
+            'Desarrollo del bot autónomo de revisión de Pull Requests en Node.js nativo con seguridad criptográfica HMAC SHA-256.',
+            'Configuración de redes privadas Zero-Trust (Tailscale SSH) y túneles seguros sin puertos abiertos.',
+            'Integración de pasarelas multi-modelo con OpenRouter API y pipelines de agentes autónomos.',
           ],
-          skills: ['Ubuntu Server', 'Docker Compose', 'Tailscale', 'Node.js', 'GitHub Actions', 'LLMs'],
+          skills: ['Ubuntu Server', 'Docker Compose', 'Tailscale SSH', 'Node.js (ESM)', 'GitHub Webhooks (HMAC)', 'OpenRouter API'],
         },
         {
           role: 'Residencia en Ingeniería Clínica & Sistemas Internos',
@@ -277,7 +328,7 @@ export const dictionary: Record<Language, Dictionary> = {
             'Formación integral en desarrollo web moderno: JavaScript avanzado, React, Node.js, Express, bases de datos y metodologías ágiles de desarrollo.',
         },
         {
-          degree: 'Especialización en Ingeniería Clínica',
+          degree: 'Especialización en Ingeniería Clínica (Residencia Hospitalaria)',
           institution: 'Ministerio de Salud Pública (SiProSa)',
           period: '2017 — 2020',
           location: 'San Miguel de Tucumán, Argentina',
@@ -353,9 +404,11 @@ export const dictionary: Record<Language, Dictionary> = {
           skills: [
             'TypeScript (2+ years daily in production)',
             'Node.js & Express.js',
+            'Socket.io (Real-time WebSockets)',
             'Clean Architecture (3 Layers)',
             'Spec-Driven Dev (OpenAPI / Swagger)',
             'Zod (Runtime schema validation)',
+            'HMAC SHA-256 (Webhook Security)',
             'Jest & Supertest (Automated Testing)',
             'JWT, OAuth2 & RBAC',
           ],
@@ -377,9 +430,11 @@ export const dictionary: Record<Language, Dictionary> = {
             'Model Context Protocol (MCP)',
             'Autonomous Agents (Hermes Agent / Nous Research)',
             'Local RAG (AnythingLLM)',
+            'OpenRouter API (Multi-LLM Gateway)',
             'Ubuntu Server 24.04 LTS & Docker Compose',
-            'Tailscale Mesh VPN (Zero-trust secure networks)',
+            'Tailscale Mesh VPN (Zero-Trust SSH)',
             'GitHub Actions & Webhooks CI/CD',
+            'SonarQube & Husky (Pre-commit hooks)',
           ],
         },
         {
@@ -390,8 +445,11 @@ export const dictionary: Record<Language, Dictionary> = {
             'React 19 & TypeScript',
             'TanStack Query (State management & caching)',
             'Radix UI & Shadcn UI (Accessibility primitives)',
-            'Tailwind CSS',
+            'React Hook Form & Zod',
+            'CVA (Design Systems) & Tailwind CSS',
             'Framer Motion',
+            'Vite & react-i18next (i18n)',
+            'React Testing Library (@testing-library/react)',
           ],
         },
         {
@@ -460,6 +518,36 @@ export const dictionary: Record<Language, Dictionary> = {
           isPrivate: true,
         },
         {
+          id: 'grey-box-codex',
+          title: 'GREY-BOX / Project Codex',
+          badge: 'Open Source / Healthcare Data',
+          tagline: 'Open-source platform for medical terminology translation and standardization.',
+          description:
+            'Collaborative open-source platform for clinical catalog ingestion, multi-language semantic exploration, and medical ontology graphs.',
+          problem:
+            'Scattered clinical terminologies create severe interoperability friction across international healthcare institutions.',
+          solution:
+            'Engineered React 19 and Vite interfaces with robust internationalization (i18next), refactoring legacy modules into TypeScript. Integrated with FastAPI (Python) backend endpoints and Neo4j ontology graphs.',
+          impact: [
+            'Strict TypeScript refactoring while preserving backward compatibility.',
+            'Multi-language medical translation exploration terminal.',
+            'Agile international collaboration and active code reviews.',
+          ],
+          stack: [
+            'React 19',
+            'Vite',
+            'TypeScript',
+            'i18next',
+            'FastAPI (Python)',
+            'Neo4j',
+            'Docker',
+          ],
+          image: '/images/projects/grey-box-codex.svg',
+          demoUrl: null,
+          codeUrl: 'https://github.com/Coriannder',
+          isPrivate: false,
+        },
+        {
           id: 'jocha-web',
           title: 'Josefina Psychology — Jocha Web',
           badge: 'Premium Frontend & UX',
@@ -492,7 +580,7 @@ export const dictionary: Record<Language, Dictionary> = {
         },
         {
           id: 'pr-reviewer-vps',
-          title: 'Ayacucho VPS & PR Reviewer Bot',
+          title: 'Linux Server & Developer Automation',
           badge: 'DevOps & Autonomous Agents',
           tagline: 'Self-hosted server infrastructure and autonomous LLM bot for real-time GitHub PR auditing.',
           description:
@@ -500,13 +588,13 @@ export const dictionary: Record<Language, Dictionary> = {
           problem:
             'Absence of continuous testing infrastructure and the need to audit Pull Requests on private repositories without high SaaS costs.',
           solution:
-            'Configured Linux host running Docker Compose and Tailscale Mesh VPN. Engineered a Node.js daemon that listens to GitHub webhooks, parses code diffs, and orchestrates LLMs to audit security vulnerabilities, styling, and API contracts.',
+            'Configured Linux host running native Node.js (ESM) with HMAC SHA-256 cryptographic security, Docker Compose, and Tailscale Mesh VPN. Listens to GitHub webhooks and orchestrates LLMs via OpenRouter API.',
           impact: [
             'Automated PR feedback in minutes with actionable commentary directly on GitHub.',
-            'Zero open internet ports via Tailscale zero-trust private mesh VPN.',
+            'Zero open internet ports via Tailscale zero-trust private mesh VPN (Zero-Trust SSH).',
             'Containerized orchestration of self-hosted agent gateways (Hermes Agent).',
           ],
-          stack: ['Ubuntu Server 24.04', 'Docker Compose', 'Node.js', 'GitHub Webhooks', 'Tailscale', 'LLMs', 'OpenRouter'],
+          stack: ['Ubuntu Server 24.04', 'Docker Compose', 'Node.js (ESM)', 'GitHub Webhooks (HMAC)', 'Tailscale SSH', 'OpenRouter API'],
           image: '/images/projects/ayacucho-vps.svg',
           demoUrl: null,
           codeUrl: null,
@@ -552,18 +640,32 @@ export const dictionary: Record<Language, Dictionary> = {
           ],
         },
         {
+          role: 'Frontend & Healthcare Data Engineer (Open Source Contributor)',
+          company: 'GREY-BOX / Project Codex',
+          period: '2026 — Present',
+          location: 'Remote / Global',
+          description:
+            'Open-source contributor to international clinical data cataloging and terminology standardization.',
+          highlights: [
+            'Engineered React 19 and Vite interfaces with comprehensive internationalization (i18next).',
+            'Refactored legacy modules into modern TypeScript following contemporary industry best practices.',
+            'Integrated frontend with FastAPI endpoints and Neo4j graph databases.',
+          ],
+          skills: ['React 19', 'Vite', 'TypeScript', 'i18next', 'FastAPI', 'Neo4j', 'Docker'],
+        },
+        {
           role: 'DevOps, Self-Hosting & Agent Infrastructure',
-          company: 'Ayacucho VPS & Home-Lab',
-          period: '2024 — Present',
+          company: 'Linux Server Infrastructure & Developer Automation',
+          period: '2026 — Present',
           location: 'Tucumán, Argentina',
           description:
             'Design and operations of server infrastructure and intelligent agent automations.',
           highlights: [
-            'Engineered autonomous Pull Request reviewer bot triggered by GitHub webhooks.',
-            'Configured Tailscale Mesh VPN and secure SSH tunnels for remote management and deployments.',
-            'Deployed local RAG pipelines and tool execution environments for language models.',
+            'Engineered autonomous Pull Request reviewer bot in native Node.js (ESM) with HMAC SHA-256 verification.',
+            'Configured Zero-Trust mesh networking (Tailscale SSH) and secure tunnels without open public ports.',
+            'Integrated multi-LLM gateways via OpenRouter API and autonomous agent environments.',
           ],
-          skills: ['Ubuntu Server', 'Docker Compose', 'Tailscale', 'Node.js', 'GitHub Actions', 'LLMs'],
+          skills: ['Ubuntu Server', 'Docker Compose', 'Tailscale SSH', 'Node.js (ESM)', 'GitHub Webhooks (HMAC)', 'OpenRouter API'],
         },
         {
           role: 'Clinical Engineering Residency & Internal Systems',
@@ -591,7 +693,7 @@ export const dictionary: Record<Language, Dictionary> = {
             'Immersion in modern web architecture: modern JavaScript (ES6+), React, Node.js, Express, relational & non-relational databases, and agile software delivery.',
         },
         {
-          degree: 'Clinical Engineering Specialization',
+          degree: 'Clinical Engineering Specialization (Hospital Residency)',
           institution: 'Ministry of Public Health (SiProSa)',
           period: '2017 — 2020',
           location: 'San Miguel de Tucumán, Argentina',
