@@ -50,6 +50,7 @@ export function Hero() {
                 <div className="mt-2.5 text-base sm:text-xl font-medium font-mono min-h-[1.75rem] flex items-center gap-2">
                   <span className="text-accent font-bold">&gt;</span>
                   <Typewriter
+                    key={language}
                     words={t.hero.roles || [t.hero.title]}
                     className="text-accent font-semibold"
                   />
