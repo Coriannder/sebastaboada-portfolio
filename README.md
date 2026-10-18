@@ -7,12 +7,12 @@
 
 ## ⚡ Tech Stack
 
-- **Framework:** Next.js 15 (App Router, Turbopack, React 19)
+- **Framework:** Next.js 16 (App Router, Turbopack, React 19)
 - **Language:** TypeScript
-- **Styling:** Tailwind CSS v4 & Next Themes (Dark/Light mode)
+- **Styling:** Tailwind CSS v4 & class-based dark mode (inline init script, no theme lib)
 - **Icons:** Lucide React & Custom SVG Brand Icons
-- **Animation & UX:** Framer Motion & Responsive Touch Handling
-- **Internationalization (i18n):** Native zero-latency bilingual engine (Spanish / English) powered by `useSyncExternalStore`
+- **Animation & UX:** Lightweight IntersectionObserver + CSS transitions (no animation library)
+- **Internationalization (i18n):** Locale routes `/es` & `/en` (SSG) with cookie-based redirect via `src/proxy.ts`
 
 ---
 
@@ -45,17 +45,16 @@
 
 ```text
 src/
+├── proxy.ts                 # Locale redirect (/ -> /es|/en via portfolio_lang cookie)
 ├── app/
 │   ├── globals.css          # Theme variables & Tailwind v4 styling
-│   ├── layout.tsx           # Root layout with ThemeProvider & LanguageProvider
-│   └── page.tsx             # One-page layout assembler
+│   └── [lang]/
+│       ├── layout.tsx       # Root layout (<html>/<body>), theme init script, metadata
+│       └── page.tsx         # One-page layout assembler
 ├── components/
-│   ├── layout/              # Fixed navbar, mobile drawer, footer
-│   ├── providers/           # ThemeProvider (next-themes)
-│   ├── sections/            # Hero, Skills, Projects, Experience, Contact
-│   └── ui/                  # ProjectCard, Icons, UI primitives
-├── context/
-│   └── LanguageContext.tsx  # React 19 storage sync bilingual context
+│   ├── layout/              # Navbar (client), Footer (server)
+│   ├── sections/            # Hero, Skills, Projects, Experience, Contact (server)
+│   └── ui/                  # Reveal, ProjectCard, TerminalTabs, Typewriter, icons…
 ├── data/
 │   └── dictionary.ts        # Source-of-truth bilingual dictionary (ES / EN)
 ├── lib/
