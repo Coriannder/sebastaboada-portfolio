@@ -8,7 +8,7 @@ import { ExternalLink, Lock, CheckCircle, ArrowRight, ChevronDown } from 'lucide
 interface ProjectCardProps {
   project: ProjectItem;
   index: number;
-  t: Dictionary;
+  t: Dictionary['projects'];
 }
 
 export function ProjectCard({ project, index, t }: ProjectCardProps) {
@@ -22,7 +22,7 @@ export function ProjectCard({ project, index, t }: ProjectCardProps) {
         {/* Header Badges */}
         <div className="flex flex-wrap items-center gap-2">
           <span className="text-[11px] font-mono text-zinc-400 dark:text-zinc-500 uppercase tracking-wider">
-            0{index + 1}{' // '}{t.projects.caseStudy}
+            0{index + 1}{' // '}{t.caseStudy}
           </span>
           <span className="px-2 py-0.5 rounded-md text-[10px] font-mono font-medium bg-zinc-100 dark:bg-zinc-800 text-zinc-700 dark:text-zinc-300 border border-zinc-200/80 dark:border-zinc-700/60">
             {project.badge}
@@ -30,10 +30,10 @@ export function ProjectCard({ project, index, t }: ProjectCardProps) {
           {project.isPrivate && (
             <span
               className="inline-flex items-center gap-1 px-2 py-0.5 rounded-md text-[10px] font-mono bg-zinc-100 dark:bg-zinc-800 text-zinc-500 dark:text-zinc-400 border border-zinc-200/80 dark:border-zinc-700/60"
-              title={t.projects.privateRepo}
+              title={t.privateRepo}
             >
               <Lock className="w-2.5 h-2.5" />
-              <span>{t.projects.ndaBadge}</span>
+              <span>{t.ndaBadge}</span>
             </span>
           )}
         </div>
@@ -62,7 +62,7 @@ export function ProjectCard({ project, index, t }: ProjectCardProps) {
             className="inline-flex items-center gap-1.5 text-xs font-mono font-medium text-zinc-500 dark:text-zinc-400 hover:text-accent transition-colors cursor-pointer"
           >
             <span>
-              {expanded ? t.projects.hideDetails : t.projects.showDetails}
+              {expanded ? t.hideDetails : t.showDetails}
             </span>
             <ChevronDown
               className={`w-3.5 h-3.5 transition-transform duration-200 ${
@@ -78,7 +78,7 @@ export function ProjectCard({ project, index, t }: ProjectCardProps) {
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 p-3.5 rounded-xl bg-zinc-50 dark:bg-zinc-950/60 border border-zinc-200/70 dark:border-zinc-800/60">
               <div>
                 <h4 className="text-[11px] font-mono font-semibold uppercase text-zinc-500 dark:text-zinc-400 tracking-wider mb-0.5">
-                  {t.projects.problemLabel}
+                  {t.problemLabel}
                 </h4>
                 <p className="text-xs text-zinc-600 dark:text-zinc-300 leading-relaxed">
                   {project.problem}
@@ -86,7 +86,7 @@ export function ProjectCard({ project, index, t }: ProjectCardProps) {
               </div>
               <div>
                 <h4 className="text-[11px] font-mono font-semibold uppercase text-accent tracking-wider mb-0.5">
-                  {t.projects.solutionLabel}
+                  {t.solutionLabel}
                 </h4>
                 <p className="text-xs text-zinc-600 dark:text-zinc-300 leading-relaxed">
                   {project.solution}
@@ -97,7 +97,7 @@ export function ProjectCard({ project, index, t }: ProjectCardProps) {
             {/* Impact Highlights */}
             <div className="space-y-1.5">
               <h4 className="text-[11px] font-mono font-semibold uppercase text-zinc-400 dark:text-zinc-500 tracking-wider">
-                {t.projects.impactLabel}
+                {t.impactLabel}
               </h4>
               <ul className="space-y-1">
                 {project.impact.map((point, i) => (
@@ -132,7 +132,7 @@ export function ProjectCard({ project, index, t }: ProjectCardProps) {
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold rounded-lg bg-zinc-900 text-white dark:bg-zinc-100 dark:text-zinc-950 hover:opacity-90 transition-opacity shadow-2xs"
               >
-                <span>{t.projects.viewDemo}</span>
+                <span>{t.viewDemo}</span>
                 <ExternalLink className="w-3 h-3" />
               </a>
             )}
@@ -143,13 +143,13 @@ export function ProjectCard({ project, index, t }: ProjectCardProps) {
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium rounded-lg border border-zinc-200 dark:border-zinc-700 hover:bg-zinc-100 dark:hover:bg-zinc-800 text-zinc-800 dark:text-zinc-200 transition-colors"
               >
-                <span>{t.projects.viewCode}</span>
+                <span>{t.viewCode}</span>
                 <ArrowRight className="w-3 h-3" />
               </a>
             )}
             {project.isPrivate && !project.demoUrl && (
               <span className="text-[11px] font-mono text-zinc-400 dark:text-zinc-500">
-                {t.projects.privateRepo}
+                {t.privateRepo}
               </span>
             )}
           </div>
@@ -160,7 +160,7 @@ export function ProjectCard({ project, index, t }: ProjectCardProps) {
       <div className="w-full md:w-56 lg:w-64 h-36 sm:h-40 shrink-0 rounded-xl overflow-hidden relative border border-zinc-200/80 dark:border-zinc-800 shadow-xs group-hover:scale-[1.02] transition-transform order-1 md:order-2 bg-zinc-100 dark:bg-zinc-950">
         <Image
           src={project.image}
-          alt={`${t.projects.imageAltPrefix} ${project.title}`}
+          alt={`${t.imageAltPrefix} ${project.title}`}
           fill
           sizes="(max-width: 768px) 100vw, 256px"
           className="object-cover object-top"

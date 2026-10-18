@@ -7,12 +7,13 @@ import type { Dictionary, Language } from '@/types/content';
 
 interface NavbarProps {
   lang: Language;
-  t: Dictionary;
+  nav: Dictionary['nav'];
+  a11y: Dictionary['a11y'];
 }
 
 const SECTION_IDS = ['skills', 'projects', 'experience', 'contact'] as const;
 
-export function Navbar({ lang, t }: NavbarProps) {
+export function Navbar({ lang, nav, a11y }: NavbarProps) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [activeSection, setActiveSection] = useState<string>('');
@@ -90,10 +91,10 @@ export function Navbar({ lang, t }: NavbarProps) {
   };
 
   const navLinks = [
-    { href: '#skills', label: t.nav.skills },
-    { href: '#projects', label: t.nav.projects },
-    { href: '#experience', label: t.nav.experience },
-    { href: '#contact', label: t.nav.contact },
+    { href: '#skills', label: nav.skills },
+    { href: '#projects', label: nav.projects },
+    { href: '#experience', label: nav.experience },
+    { href: '#contact', label: nav.contact },
   ];
 
   return (
@@ -143,7 +144,7 @@ export function Navbar({ lang, t }: NavbarProps) {
             href={`/${otherLang}`}
             onClick={persistLangCookie}
             className="flex items-center gap-1 px-2 py-1 text-xs font-mono font-medium rounded-md border border-zinc-200 dark:border-zinc-800 hover:bg-zinc-100 dark:hover:bg-zinc-800/60 text-zinc-700 dark:text-zinc-300 transition-colors cursor-pointer"
-            aria-label={t.a11y.toggleLanguage}
+            aria-label={a11y.toggleLanguage}
             title={lang === 'es' ? 'Switch to English' : 'Cambiar a Español'}
           >
             <Globe className="w-3.5 h-3.5" />
@@ -155,7 +156,7 @@ export function Navbar({ lang, t }: NavbarProps) {
             type="button"
             onClick={toggleTheme}
             className="p-1.5 rounded-md border border-zinc-200 dark:border-zinc-800 hover:bg-zinc-100 dark:hover:bg-zinc-800/60 text-zinc-700 dark:text-zinc-300 transition-colors cursor-pointer"
-            aria-label={t.a11y.toggleTheme}
+            aria-label={a11y.toggleTheme}
           >
             <Sun className="w-3.5 h-3.5 text-amber-400 hidden dark:block" />
             <Moon className="w-3.5 h-3.5 text-zinc-600 dark:hidden" />
@@ -169,7 +170,7 @@ export function Navbar({ lang, t }: NavbarProps) {
             className="hidden sm:inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium rounded-md bg-zinc-900 text-white dark:bg-zinc-100 dark:text-zinc-950 hover:opacity-90 transition-opacity shadow-xs"
           >
             <FileText className="w-3.5 h-3.5" />
-            <span>{t.nav.resume}</span>
+            <span>{nav.resume}</span>
             <ArrowUpRight className="w-3 h-3 opacity-60" />
           </a>
 
@@ -179,7 +180,7 @@ export function Navbar({ lang, t }: NavbarProps) {
             ref={menuButtonRef}
             onClick={() => setMobileMenuOpen((prev) => !prev)}
             className="md:hidden p-2 rounded-lg border border-zinc-200 dark:border-zinc-800 text-zinc-700 dark:text-zinc-300 hover:bg-zinc-100 dark:hover:bg-zinc-800/60 transition-colors cursor-pointer flex items-center justify-center min-w-[38px] min-h-[38px]"
-            aria-label={mobileMenuOpen ? t.a11y.closeMenu : t.a11y.openMenu}
+            aria-label={mobileMenuOpen ? a11y.closeMenu : a11y.openMenu}
             aria-expanded={mobileMenuOpen}
             aria-controls="mobile-nav"
           >
@@ -217,7 +218,7 @@ export function Navbar({ lang, t }: NavbarProps) {
               className="flex items-center justify-center gap-2 w-full px-3 py-2.5 text-sm font-medium rounded-xl bg-zinc-900 text-white dark:bg-zinc-100 dark:text-zinc-950 shadow-xs active:scale-[0.99] transition-transform"
             >
               <FileText className="w-4 h-4" />
-              <span>{t.nav.resume}</span>
+              <span>{nav.resume}</span>
             </a>
           </div>
         </div>

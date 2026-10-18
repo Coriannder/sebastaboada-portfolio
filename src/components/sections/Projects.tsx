@@ -21,7 +21,7 @@ export function Projects({ t }: { t: Dictionary }) {
         <div className="space-y-6">
           {t.projects.items.map((project, idx) => (
             <Reveal key={project.id} delay={0.05}>
-              <ProjectCard project={project} index={idx} t={t} />
+              <ProjectCard project={project} index={idx} t={t.projects} />
             </Reveal>
           ))}
         </div>

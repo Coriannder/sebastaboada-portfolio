@@ -28,7 +28,7 @@ export default async function Home({
       >
         {t.a11y.skipToContent}
       </a>
-      <Navbar lang={locale} t={t} />
+      <Navbar lang={locale} nav={t.nav} a11y={t.a11y} />
       <main id="main" className="flex-1">
         <Hero lang={locale} t={t} />
         <Skills t={t} />

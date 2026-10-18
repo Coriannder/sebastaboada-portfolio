@@ -126,8 +126,8 @@ export function Hero({ lang, t }: HeroProps) {
                   alt="Sebastián Taboada"
                   fill
                   placeholder="blur"
-                  quality={95}
-                  sizes="(max-width: 768px) 384px, 450px"
+                  quality={75}
+                  sizes="(max-width: 640px) 144px, 176px"
                   priority
                   className="object-cover object-[50%_18%] scale-[1.5] translate-y-1.5 origin-[50%_22%]"
                 />
