@@ -1,5 +1,7 @@
 import React from 'react';
 import type { Dictionary } from '@/types/content';
+import { SectionHeader } from '@/components/ui/SectionHeader';
+import { Reveal } from '@/components/ui/Reveal';
 import { Briefcase, GraduationCap, CheckCircle2, Calendar, MapPin } from 'lucide-react';
 
 export function Experience({ t }: { t: Dictionary }) {
@@ -7,24 +9,17 @@ export function Experience({ t }: { t: Dictionary }) {
   return (
     <section id="experience" className="py-20 border-t border-zinc-200/80 dark:border-zinc-800/80">
       <div className="max-w-4xl mx-auto px-4 sm:px-6">
-        {/* Section Header */}
-        <div className="max-w-2xl mb-12">
-          <div className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md text-xs font-mono font-medium bg-zinc-100 dark:bg-zinc-800 text-zinc-700 dark:text-zinc-300 mb-3 border border-zinc-200 dark:border-zinc-700">
-            <Briefcase className="w-3.5 h-3.5 text-accent" />
-            <span>{t.experience.badge}</span>
-          </div>
-          <h2 className="text-2xl sm:text-3xl font-bold tracking-tight text-zinc-900 dark:text-zinc-100">
-            {t.experience.title}
-          </h2>
-          <p className="mt-2 text-sm sm:text-base text-zinc-600 dark:text-zinc-400">
-            {t.experience.subtitle}
-          </p>
-        </div>
+        <SectionHeader
+          icon={Briefcase}
+          badge={t.experience.badge}
+          title={t.experience.title}
+          subtitle={t.experience.subtitle}
+        />
 
         {/* Experience Timeline */}
         <div className="relative pl-6 sm:pl-8 border-l-2 border-zinc-200 dark:border-zinc-800 space-y-12">
           {t.experience.items.map((item, idx) => (
-            <div key={idx} className="relative group">
+            <Reveal key={idx} delay={idx * 0.06} className="relative group">
               {/* Dot indicator */}
               <div className="absolute -left-[31px] sm:-left-[39px] top-1.5 w-4 h-4 rounded-full bg-white dark:bg-zinc-950 border-2 border-accent group-hover:scale-125 transition-transform" />
 
@@ -78,12 +73,12 @@ export function Experience({ t }: { t: Dictionary }) {
                   ))}
                 </div>
               </div>
-            </div>
+            </Reveal>
           ))}
         </div>
 
         {/* Education Highlight Section */}
-        <div className="mt-16 pt-8 border-t border-zinc-200/80 dark:border-zinc-800/80">
+        <Reveal className="mt-16 pt-8 border-t border-zinc-200/80 dark:border-zinc-800/80">
           <div className="flex items-center gap-2 mb-6">
             <div className="w-9 h-9 rounded-lg bg-accent/10 border border-accent/20 flex items-center justify-center text-accent">
               <GraduationCap className="w-5 h-5" />
@@ -117,7 +112,7 @@ export function Experience({ t }: { t: Dictionary }) {
               </div>
             ))}
           </div>
-        </div>
+        </Reveal>
       </div>
     </section>
   );

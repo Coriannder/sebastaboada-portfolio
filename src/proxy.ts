@@ -21,6 +21,6 @@ export function proxy(request: NextRequest) {
 export const config = {
   // Skip _next internals, any path containing a file extension
   // (favicon.ico, icon.svg, sitemap.xml, /docs/*.pdf, /images/*), and the
-  // generated /icon route which has no extension.
-  matcher: ['/((?!_next|.*\\..*|icon$).*)'],
+  // generated /icon and /apple-icon routes which have no extension.
+  matcher: ['/((?!_next|.*\\..*|icon$|apple-icon$).*)'],
 };

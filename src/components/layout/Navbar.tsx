@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useEffect, useLayoutEffect } from 'react';
+import React, { useState, useEffect, useLayoutEffect, useRef } from 'react';
 import Link from 'next/link';
 import { Sun, Moon, Globe, Menu, X, FileText, ArrowUpRight } from 'lucide-react';
 import type { Dictionary, Language } from '@/types/content';
@@ -10,9 +10,14 @@ interface NavbarProps {
   t: Dictionary;
 }
 
+const SECTION_IDS = ['skills', 'projects', 'experience', 'contact'] as const;
+
 export function Navbar({ lang, t }: NavbarProps) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [activeSection, setActiveSection] = useState<string>('');
+  const menuButtonRef = useRef<HTMLButtonElement>(null);
+  const firstDrawerLinkRef = useRef<HTMLAnchorElement>(null);
 
   const toggleTheme = () => {
     const isDark = document.documentElement.classList.toggle('dark');
@@ -46,10 +51,33 @@ export function Navbar({ lang, t }: NavbarProps) {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  // Scrollspy: highlight the nav link of the section in view
+  useEffect(() => {
+    const sections = SECTION_IDS.map((id) => document.getElementById(id)).filter(
+      (el): el is HTMLElement => el !== null
+    );
+    if (sections.length === 0) return;
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) setActiveSection(`#${entry.target.id}`);
+        });
+      },
+      { rootMargin: '-25% 0px -65% 0px' }
+    );
+    sections.forEach((s) => observer.observe(s));
+    return () => observer.disconnect();
+  }, []);
+
+  // Focus management + Escape for the mobile drawer
   useEffect(() => {
     if (!mobileMenuOpen) return;
+    firstDrawerLinkRef.current?.focus();
     const handleKeyDown = (e: KeyboardEvent) => {
-      if (e.key === 'Escape') setMobileMenuOpen(false);
+      if (e.key === 'Escape') {
+        setMobileMenuOpen(false);
+        menuButtonRef.current?.focus();
+      }
     };
     window.addEventListener('keydown', handleKeyDown);
     return () => window.removeEventListener('keydown', handleKeyDown);
@@ -96,7 +124,12 @@ export function Navbar({ lang, t }: NavbarProps) {
             <a
               key={link.href}
               href={link.href}
-              className="px-3 py-1.5 text-xs font-medium text-zinc-600 dark:text-zinc-400 hover:text-zinc-950 dark:hover:text-zinc-100 rounded-md hover:bg-zinc-100/80 dark:hover:bg-zinc-800/50 transition-colors"
+              aria-current={activeSection === link.href ? 'true' : undefined}
+              className={`px-3 py-1.5 text-xs font-medium rounded-md transition-colors ${
+                activeSection === link.href
+                  ? 'text-accent bg-accent/10'
+                  : 'text-zinc-600 dark:text-zinc-400 hover:text-zinc-950 dark:hover:text-zinc-100 hover:bg-zinc-100/80 dark:hover:bg-zinc-800/50'
+              }`}
             >
               {link.label}
             </a>
@@ -143,6 +176,7 @@ export function Navbar({ lang, t }: NavbarProps) {
           {/* Mobile Menu Button */}
           <button
             type="button"
+            ref={menuButtonRef}
             onClick={() => setMobileMenuOpen((prev) => !prev)}
             className="md:hidden p-2 rounded-lg border border-zinc-200 dark:border-zinc-800 text-zinc-700 dark:text-zinc-300 hover:bg-zinc-100 dark:hover:bg-zinc-800/60 transition-colors cursor-pointer flex items-center justify-center min-w-[38px] min-h-[38px]"
             aria-label={mobileMenuOpen ? t.a11y.closeMenu : t.a11y.openMenu}
@@ -158,12 +192,17 @@ export function Navbar({ lang, t }: NavbarProps) {
       {mobileMenuOpen && (
         <div id="mobile-nav" className="md:hidden bg-white/95 dark:bg-zinc-950/95 backdrop-blur-xl border-b border-zinc-200 dark:border-zinc-800 px-4 py-4 space-y-3 shadow-lg">
           <nav className="flex flex-col space-y-1">
-            {navLinks.map((link) => (
+            {navLinks.map((link, i) => (
               <a
                 key={link.href}
                 href={link.href}
+                ref={i === 0 ? firstDrawerLinkRef : undefined}
                 onClick={() => setMobileMenuOpen(false)}
-                className="block px-3 py-2.5 text-sm font-medium text-zinc-800 dark:text-zinc-200 rounded-lg hover:bg-zinc-100 dark:hover:bg-zinc-900 transition-colors"
+                className={`block px-3 py-2.5 text-sm font-medium rounded-lg transition-colors ${
+                  activeSection === link.href
+                    ? 'text-accent bg-accent/10'
+                    : 'text-zinc-800 dark:text-zinc-200 hover:bg-zinc-100 dark:hover:bg-zinc-900'
+                }`}
               >
                 {link.label}
               </a>

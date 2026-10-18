@@ -2,6 +2,8 @@
 
 import React, { useState } from 'react';
 import type { Dictionary } from '@/types/content';
+import { SectionHeader } from '@/components/ui/SectionHeader';
+import { Reveal } from '@/components/ui/Reveal';
 import {
   Mail,
   Copy,
@@ -31,24 +33,17 @@ export function Contact({ t }: { t: Dictionary }) {
   return (
     <section id="contact" className="py-20 border-t border-zinc-200/80 dark:border-zinc-800/80">
       <div className="max-w-4xl mx-auto px-4 sm:px-6">
-        {/* Header */}
-        <div className="max-w-2xl mb-12">
-          <div className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md text-xs font-mono font-medium bg-zinc-100 dark:bg-zinc-800 text-zinc-700 dark:text-zinc-300 mb-3 border border-zinc-200 dark:border-zinc-700">
-            <MessageSquare className="w-3.5 h-3.5 text-accent" />
-            <span>{t.contact.badge}</span>
-          </div>
-          <h2 className="text-2xl sm:text-3xl font-bold tracking-tight text-zinc-900 dark:text-zinc-100">
-            {t.contact.title}
-          </h2>
-          <p className="mt-2 text-sm sm:text-base text-zinc-600 dark:text-zinc-400">
-            {t.contact.subtitle}
-          </p>
-        </div>
+        <SectionHeader
+          icon={MessageSquare}
+          badge={t.contact.badge}
+          title={t.contact.title}
+          subtitle={t.contact.subtitle}
+        />
 
         {/* Contact Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {/* Card 1: Email Copy Action */}
-          <div className="p-6 rounded-2xl border border-zinc-200/90 dark:border-zinc-800/90 bg-white dark:bg-zinc-900/40 shadow-xs flex flex-col justify-between space-y-6">
+          <Reveal className="p-6 rounded-2xl border border-zinc-200/90 dark:border-zinc-800/90 bg-white dark:bg-zinc-900/40 shadow-xs flex flex-col justify-between space-y-6">
             <div className="space-y-3">
               <div className="w-10 h-10 rounded-xl bg-accent/10 border border-accent/20 flex items-center justify-center text-accent">
                 <Mail className="w-5 h-5" />
@@ -94,10 +89,10 @@ export function Contact({ t }: { t: Dictionary }) {
                 {t.contact.openMailClient}
               </a>
             </div>
-          </div>
+          </Reveal>
 
           {/* Card 2: CV Downloads & Socials */}
-          <div className="p-6 rounded-2xl border border-zinc-200/90 dark:border-zinc-800/90 bg-white dark:bg-zinc-900/40 shadow-xs flex flex-col justify-between space-y-6">
+          <Reveal delay={0.08} className="p-6 rounded-2xl border border-zinc-200/90 dark:border-zinc-800/90 bg-white dark:bg-zinc-900/40 shadow-xs flex flex-col justify-between space-y-6">
             <div className="space-y-4">
               <div>
                 <h3 className="text-base font-bold text-zinc-900 dark:text-zinc-100 mb-1">
@@ -169,7 +164,7 @@ export function Contact({ t }: { t: Dictionary }) {
                 </div>
               </div>
             </div>
-          </div>
+          </Reveal>
         </div>
       </div>
     </section>

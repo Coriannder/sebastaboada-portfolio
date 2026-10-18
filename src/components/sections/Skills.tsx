@@ -1,5 +1,7 @@
 import React from 'react';
 import type { Dictionary } from '@/types/content';
+import { SectionHeader } from '@/components/ui/SectionHeader';
+import { Reveal } from '@/components/ui/Reveal';
 import {
   Server,
   Database,
@@ -23,27 +25,21 @@ export function Skills({ t }: { t: Dictionary }) {
   return (
     <section id="skills" className="py-20 border-t border-zinc-200/80 dark:border-zinc-800/80">
       <div className="max-w-6xl mx-auto px-4 sm:px-6">
-        {/* Section Header */}
-        <div className="max-w-2xl mb-12">
-          <div className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md text-xs font-mono font-medium bg-zinc-100 dark:bg-zinc-800 text-zinc-700 dark:text-zinc-300 mb-3 border border-zinc-200 dark:border-zinc-700">
-            <Layers className="w-3.5 h-3.5 text-accent" />
-            <span>{t.skills.badge}</span>
-          </div>
-          <h2 className="text-2xl sm:text-3xl font-bold tracking-tight text-zinc-900 dark:text-zinc-100">
-            {t.skills.title}
-          </h2>
-          <p className="mt-2 text-sm sm:text-base text-zinc-600 dark:text-zinc-400">
-            {t.skills.subtitle}
-          </p>
-        </div>
+        <SectionHeader
+          icon={Layers}
+          badge={t.skills.badge}
+          title={t.skills.title}
+          subtitle={t.skills.subtitle}
+        />
 
         {/* Skills Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {t.skills.categories.map((cat, idx) => {
             const Icon = categoryIcons[idx] || Server;
             return (
-              <div
+              <Reveal
                 key={cat.title}
+                delay={idx * 0.08}
                 className={`relative rounded-xl p-6 border border-zinc-200/90 dark:border-zinc-800/90 bg-white dark:bg-zinc-900/40 backdrop-blur-xs hover:border-zinc-300 dark:hover:border-zinc-700 transition-all duration-200 shadow-2xs hover:shadow-xs flex flex-col justify-between ${
                   idx === 4 ? 'md:col-span-2 lg:col-span-2' : ''
                 }`}
@@ -78,7 +74,7 @@ export function Skills({ t }: { t: Dictionary }) {
                   <span>0{idx + 1} / 05</span>
                   <span>PRODUCTION READY</span>
                 </div>
-              </div>
+              </Reveal>
             );
           })}
         </div>
