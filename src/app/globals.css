@@ -7,6 +7,18 @@
   --color-accent-foreground: var(--accent-foreground);
   --color-accent-subtle: var(--accent-subtle);
   --color-accent-border: var(--accent-border);
+  --animate-fade-in: fade-in 0.3s ease-out;
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(-4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 :root {
@@ -22,7 +34,7 @@
      COLOR DE ACENTO MONOCROMÁTICO (Un solo color en todo el sitio)
      Para cambiarlo en el futuro, sólo editás estos valores:
      ======================================================== */
-  --accent: #059669; /* Verde esmeralda */
+  --accent: #047857; /* Verde esmeralda oscuro (contraste WCAG AA sobre fondo claro) */
   --accent-foreground: #ffffff;
   --accent-subtle: #ecfdf5;
   --accent-border: #a7f3d0;
@@ -66,4 +78,25 @@ body {
 }
 ::-webkit-scrollbar-thumb:hover {
   background: #71717a88;
+}
+
+/* Focus visible para navegación por teclado */
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+/* Respeto a prefers-reduced-motion (accesibilidad) */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
 }

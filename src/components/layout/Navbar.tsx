@@ -23,9 +23,18 @@ export function Navbar() {
     const handleScroll = () => {
       setScrolled(window.scrollY > 20);
     };
-    window.addEventListener('scroll', handleScroll);
+    window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+
+  useEffect(() => {
+    if (!mobileMenuOpen) return;
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') setMobileMenuOpen(false);
+    };
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [mobileMenuOpen]);
 
   const navLinks = [
     { href: '#skills', label: t.nav.skills },
@@ -76,7 +85,7 @@ export function Navbar() {
             type="button"
             onClick={() => setLanguage(language === 'es' ? 'en' : 'es')}
             className="flex items-center gap-1 px-2 py-1 text-xs font-mono font-medium rounded-md border border-zinc-200 dark:border-zinc-800 hover:bg-zinc-100 dark:hover:bg-zinc-800/60 text-zinc-700 dark:text-zinc-300 transition-colors cursor-pointer"
-            aria-label="Toggle language"
+            aria-label={t.a11y.toggleLanguage}
             title={language === 'es' ? 'Switch to English' : 'Cambiar a Español'}
           >
             <Globe className="w-3.5 h-3.5" />
@@ -89,7 +98,7 @@ export function Navbar() {
               type="button"
               onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
               className="p-1.5 rounded-md border border-zinc-200 dark:border-zinc-800 hover:bg-zinc-100 dark:hover:bg-zinc-800/60 text-zinc-700 dark:text-zinc-300 transition-colors cursor-pointer"
-              aria-label="Toggle theme"
+              aria-label={t.a11y.toggleTheme}
             >
               {theme === 'dark' ? (
                 <Sun className="w-3.5 h-3.5 text-amber-400" />
@@ -116,8 +125,9 @@ export function Navbar() {
             type="button"
             onClick={() => setMobileMenuOpen((prev) => !prev)}
             className="md:hidden p-2 rounded-lg border border-zinc-200 dark:border-zinc-800 text-zinc-700 dark:text-zinc-300 hover:bg-zinc-100 dark:hover:bg-zinc-800/60 transition-colors cursor-pointer flex items-center justify-center min-w-[38px] min-h-[38px]"
-            aria-label={mobileMenuOpen ? 'Close navigation menu' : 'Open navigation menu'}
+            aria-label={mobileMenuOpen ? t.a11y.closeMenu : t.a11y.openMenu}
             aria-expanded={mobileMenuOpen}
+            aria-controls="mobile-nav"
           >
             {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
           </button>
@@ -126,7 +136,7 @@ export function Navbar() {
 
       {/* Mobile Drawer */}
       {mobileMenuOpen && (
-        <div className="md:hidden bg-white/95 dark:bg-zinc-950/95 backdrop-blur-xl border-b border-zinc-200 dark:border-zinc-800 px-4 py-4 space-y-3 shadow-lg">
+        <div id="mobile-nav" className="md:hidden bg-white/95 dark:bg-zinc-950/95 backdrop-blur-xl border-b border-zinc-200 dark:border-zinc-800 px-4 py-4 space-y-3 shadow-lg">
           <nav className="flex flex-col space-y-1">
             {navLinks.map((link) => (
               <a

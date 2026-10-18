@@ -1,6 +1,6 @@
 'use client';
 
-import React, { createContext, useContext, useSyncExternalStore } from 'react';
+import React, { createContext, useContext, useEffect, useSyncExternalStore } from 'react';
 import { Language, Dictionary } from '@/types/content';
 import { dictionary } from '@/data/dictionary';
 
@@ -35,6 +35,10 @@ function getServerSnapshot(): Language {
 
 export function LanguageProvider({ children }: { children: React.ReactNode }) {
   const language = useSyncExternalStore(subscribe, getSnapshot, getServerSnapshot);
+
+  useEffect(() => {
+    document.documentElement.lang = language;
+  }, [language]);
 
   const setLanguage = (lang: Language) => {
     localStorage.setItem('portfolio_lang', lang);

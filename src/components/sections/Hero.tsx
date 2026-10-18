@@ -3,17 +3,15 @@
 import React, { useState } from 'react';
 import Image from 'next/image';
 import { useLanguage } from '@/context/LanguageContext';
-import { 
-  ArrowDown, 
-  Mail, 
-  FileDown, 
-  Terminal, 
-  Layers, 
-  Cpu, 
-  MapPin, 
-  CheckCircle2, 
+import {
+  ArrowDown,
+  Mail,
+  FileDown,
+  Layers,
+  Cpu,
+  MapPin,
   Sparkles,
-  ExternalLink 
+  ExternalLink
 } from 'lucide-react';
 import { GithubIcon, LinkedinIcon } from '@/components/ui/Icons';
 import { Typewriter } from '@/components/ui/Typewriter';
@@ -144,12 +142,10 @@ export function Hero() {
               <div className="p-2.5 rounded-xl bg-zinc-50 dark:bg-zinc-800/50 border border-zinc-200/60 dark:border-zinc-700/50 text-left">
                 <div className="flex items-center gap-1.5 text-xs font-semibold text-zinc-800 dark:text-zinc-200">
                   <Sparkles className="w-3.5 h-3.5 text-accent" />
-                  <span>{language === 'es' ? 'Foco Diferencial' : 'Key Differentiator'}</span>
+                  <span>{t.hero.differentiatorLabel}</span>
                 </div>
                 <p className="text-[11px] text-zinc-600 dark:text-zinc-400 mt-1 leading-snug">
-                  {language === 'es'
-                    ? 'Bioingeniería aplicada al software: rigor metódico en datos, estándares y arquitecturas críticas.'
-                    : 'Bioengineering applied to software: methodological rigor in data, standards & critical architectures.'}
+                  {t.hero.differentiatorText}
                 </p>
               </div>
             </div>
@@ -166,10 +162,14 @@ export function Hero() {
                 <span className="text-xs font-mono text-zinc-400 ml-2 hidden sm:inline">sebas@fullstack-box:~</span>
               </div>
               {/* Tabs */}
-              <div className="flex items-center gap-1">
+              <div className="flex items-center gap-1" role="tablist" aria-label="Terminal panels">
                 {(['stack', 'arch', 'status'] as const).map((tab) => (
                   <button
                     key={tab}
+                    role="tab"
+                    id={`terminal-tab-${tab}`}
+                    aria-selected={activeTab === tab}
+                    aria-controls={`terminal-panel-${tab}`}
                     onClick={() => setActiveTab(tab)}
                     className={`px-2.5 py-1 rounded-md text-xs font-mono transition-colors ${
                       activeTab === tab
@@ -186,8 +186,13 @@ export function Hero() {
             {/* Terminal Body */}
             <div className="p-4 sm:p-5 font-mono text-xs sm:text-[13px] leading-relaxed overflow-x-auto min-h-[170px] flex items-center">
               {activeTab === 'stack' && (
-                <div className="space-y-1 text-zinc-300">
-                  <p className="text-zinc-500">// Modern Full Stack capabilities</p>
+                <div
+                  role="tabpanel"
+                  id="terminal-panel-stack"
+                  aria-labelledby="terminal-tab-stack"
+                  className="space-y-1 text-zinc-300"
+                >
+                  <p className="text-zinc-500">{'// Modern Full Stack capabilities'}</p>
                   <p>
                     <span className="text-accent">const</span> <span className="text-zinc-100">stack</span> = &#123;
                   </p>
@@ -205,7 +210,12 @@ export function Hero() {
               )}
 
               {activeTab === 'arch' && (
-                <div className="space-y-1.5 text-zinc-300">
+                <div
+                  role="tabpanel"
+                  id="terminal-panel-arch"
+                  aria-labelledby="terminal-tab-arch"
+                  className="space-y-1.5 text-zinc-300"
+                >
                   <p className="text-accent font-semibold">## Engineering Principles</p>
                   <p className="flex items-center gap-2">
                     <span className="text-accent">✔</span>
@@ -223,7 +233,12 @@ export function Hero() {
               )}
 
               {activeTab === 'status' && (
-                <div className="space-y-1 text-zinc-300">
+                <div
+                  role="tabpanel"
+                  id="terminal-panel-status"
+                  aria-labelledby="terminal-tab-status"
+                  className="space-y-1 text-zinc-300"
+                >
                   <p>&#123;</p>
                   <p className="pl-4">
                     <span className="text-zinc-400">&quot;role&quot;</span>: <span className="text-accent">&quot;Full Stack Developer / HealthTech&quot;</span>,
@@ -245,7 +260,7 @@ export function Hero() {
             <div>
               <div className="flex items-center gap-2 text-xs font-mono font-semibold text-zinc-500 dark:text-zinc-400 uppercase tracking-wider mb-3">
                 <Layers className="w-3.5 h-3.5 text-accent" />
-                <span>{language === 'es' ? 'Stack en Producción' : 'Production Stack'}</span>
+                <span>{t.hero.productionStack}</span>
               </div>
               <div className="flex flex-wrap gap-1.5">
                 {[
@@ -273,13 +288,13 @@ export function Hero() {
             <div className="pt-4 mt-4 border-t border-zinc-100 dark:border-zinc-800/80 flex items-center justify-between text-xs text-zinc-600 dark:text-zinc-400 font-mono">
               <span className="flex items-center gap-1.5">
                 <Cpu className="w-3.5 h-3.5 text-accent" />
-                <span>APIs & Frontends</span>
+                <span>{t.hero.stackFooterLabel}</span>
               </span>
-              <a 
-                href="#skills" 
+              <a
+                href="#skills"
                 className="text-accent hover:underline inline-flex items-center gap-1"
               >
-                <span>{language === 'es' ? 'Ver todo el stack' : 'View all stack'}</span>
+                <span>{t.hero.viewAllStack}</span>
                 <ExternalLink className="w-3 h-3" />
               </a>
             </div>

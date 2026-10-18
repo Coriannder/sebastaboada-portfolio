@@ -48,6 +48,13 @@ export interface Dictionary {
     contact: string;
     resume: string;
   };
+  a11y: {
+    skipToContent: string;
+    toggleLanguage: string;
+    toggleTheme: string;
+    openMenu: string;
+    closeMenu: string;
+  };
   hero: {
     availableBadge: string;
     greeting: string;
@@ -58,6 +65,11 @@ export interface Dictionary {
     ctaProjects: string;
     ctaContact: string;
     ctaResume: string;
+    differentiatorLabel: string;
+    differentiatorText: string;
+    productionStack: string;
+    viewAllStack: string;
+    stackFooterLabel: string;
   };
   skills: {
     badge: string;
@@ -76,6 +88,11 @@ export interface Dictionary {
     solutionLabel: string;
     impactLabel: string;
     stackLabel: string;
+    caseStudy: string;
+    ndaBadge: string;
+    showDetails: string;
+    hideDetails: string;
+    imageAltPrefix: string;
     items: ProjectItem[];
   };
   experience: {
@@ -93,7 +110,11 @@ export interface Dictionary {
     copyEmail: string;
     copied: string;
     directSocials: string;
+    emailTitle: string;
+    emailDescription: string;
+    openMailClient: string;
     resumeTitle: string;
+    resumeDescription: string;
     downloadEs: string;
     downloadEn: string;
     locationLabel: string;

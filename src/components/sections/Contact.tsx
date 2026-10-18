@@ -55,10 +55,10 @@ export function Contact() {
                 <Mail className="w-5 h-5" />
               </div>
               <h3 className="text-base font-bold text-zinc-900 dark:text-zinc-100">
-                Email Profesional
+                {t.contact.emailTitle}
               </h3>
               <p className="text-xs text-zinc-500 dark:text-zinc-400 leading-relaxed">
-                Escríbeme directamente para consultas técnicas, propuestas laborales o colaboraciones.
+                {t.contact.emailDescription}
               </p>
             </div>
 
@@ -70,7 +70,8 @@ export function Contact() {
                 <button
                   onClick={handleCopyEmail}
                   className="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium rounded-lg bg-zinc-900 text-white dark:bg-zinc-100 dark:text-zinc-950 hover:opacity-90 transition-all shrink-0 cursor-pointer"
-                  title="Copiar email"
+                  title={t.contact.copyEmail}
+                  aria-live="polite"
                 >
                   {copied ? (
                     <>
@@ -91,7 +92,7 @@ export function Contact() {
                 href={`mailto:${email}`}
                 className="block text-center text-xs text-accent hover:underline font-mono"
               >
-                O abrir en tu cliente de correo predeterminado →
+                {t.contact.openMailClient}
               </a>
             </div>
           </div>
@@ -104,7 +105,7 @@ export function Contact() {
                   {t.contact.resumeTitle}
                 </h3>
                 <p className="text-xs text-zinc-500 dark:text-zinc-400">
-                  Descarga mi perfil profesional en formato PDF para archivo o revisión offline.
+                  {t.contact.resumeDescription}
                 </p>
               </div>
 

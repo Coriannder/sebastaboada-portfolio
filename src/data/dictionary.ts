@@ -9,6 +9,13 @@ export const dictionary: Record<Language, Dictionary> = {
       contact: 'Contacto',
       resume: 'CV (PDF)',
     },
+    a11y: {
+      skipToContent: 'Saltar al contenido principal',
+      toggleLanguage: 'Cambiar idioma',
+      toggleTheme: 'Cambiar tema',
+      openMenu: 'Abrir menú de navegación',
+      closeMenu: 'Cerrar menú de navegación',
+    },
     hero: {
       availableBadge: 'Disponible para proyectos y roles Full Stack / HealthTech',
       greeting: 'Hola, soy',
@@ -26,6 +33,12 @@ export const dictionary: Record<Language, Dictionary> = {
       ctaProjects: 'Explorar Proyectos',
       ctaContact: 'Contactar',
       ctaResume: 'Descargar CV',
+      differentiatorLabel: 'Foco Diferencial',
+      differentiatorText:
+        'Bioingeniería aplicada al software: rigor metódico en datos, estándares y arquitecturas críticas.',
+      productionStack: 'Stack en Producción',
+      viewAllStack: 'Ver todo el stack',
+      stackFooterLabel: 'APIs & Frontends',
     },
     skills: {
       badge: 'Especialidades Técnicas',
@@ -111,6 +124,11 @@ export const dictionary: Record<Language, Dictionary> = {
       solutionLabel: 'Arquitectura & Solución',
       impactLabel: 'Impacto & Resultados',
       stackLabel: 'Stack Tecnológico',
+      caseStudy: 'Caso de Estudio',
+      ndaBadge: 'NDA / Empresarial',
+      showDetails: 'Ver desafío, arquitectura e impacto',
+      hideDetails: 'Ocultar detalles técnicos',
+      imageAltPrefix: 'Vista previa de',
       items: [
         {
           id: 'medevice',
@@ -208,7 +226,7 @@ export const dictionary: Record<Language, Dictionary> = {
             'SEO & OpenGraph',
             'Vercel',
           ],
-          image: '/images/projects/jocha-web.png',
+          image: '/images/projects/jocha-web.webp',
           demoUrl: 'https://jocha-web.vercel.app/',
           codeUrl: null,
           isPrivate: false,
@@ -353,7 +371,13 @@ export const dictionary: Record<Language, Dictionary> = {
       copyEmail: 'Copiar Email',
       copied: '¡Email copiado al portapapeles!',
       directSocials: 'Redes Profesionales',
+      emailTitle: 'Email Profesional',
+      emailDescription:
+        'Escríbeme directamente para consultas técnicas, propuestas laborales o colaboraciones.',
+      openMailClient: 'O abrir en tu cliente de correo predeterminado →',
       resumeTitle: 'Currículum Vitae',
+      resumeDescription:
+        'Descarga mi perfil profesional en formato PDF para archivo o revisión offline.',
       downloadEs: 'Descargar CV (Español)',
       downloadEn: 'Download CV (English)',
       locationLabel: 'Ubicación',
@@ -374,6 +398,13 @@ export const dictionary: Record<Language, Dictionary> = {
       contact: 'Contact',
       resume: 'Resume (PDF)',
     },
+    a11y: {
+      skipToContent: 'Skip to main content',
+      toggleLanguage: 'Toggle language',
+      toggleTheme: 'Toggle theme',
+      openMenu: 'Open navigation menu',
+      closeMenu: 'Close navigation menu',
+    },
     hero: {
       availableBadge: 'Available for Full Stack & HealthTech roles',
       greeting: 'Hi, I am',
@@ -391,6 +422,12 @@ export const dictionary: Record<Language, Dictionary> = {
       ctaProjects: 'Explore Projects',
       ctaContact: 'Get in Touch',
       ctaResume: 'Download Resume',
+      differentiatorLabel: 'Key Differentiator',
+      differentiatorText:
+        'Bioengineering applied to software: methodological rigor in data, standards & critical architectures.',
+      productionStack: 'Production Stack',
+      viewAllStack: 'View all stack',
+      stackFooterLabel: 'APIs & Frontends',
     },
     skills: {
       badge: 'Technical Expertise',
@@ -476,6 +513,11 @@ export const dictionary: Record<Language, Dictionary> = {
       solutionLabel: 'Architecture & Solution',
       impactLabel: 'Impact & Results',
       stackLabel: 'Tech Stack',
+      caseStudy: 'Case Study',
+      ndaBadge: 'NDA / Enterprise',
+      showDetails: 'View challenge, architecture & impact',
+      hideDetails: 'Hide technical details',
+      imageAltPrefix: 'Preview of',
       items: [
         {
           id: 'medevice',
@@ -573,7 +615,7 @@ export const dictionary: Record<Language, Dictionary> = {
             'SEO & OpenGraph',
             'Vercel',
           ],
-          image: '/images/projects/jocha-web.png',
+          image: '/images/projects/jocha-web.webp',
           demoUrl: 'https://jocha-web.vercel.app/',
           codeUrl: null,
           isPrivate: false,
@@ -718,7 +760,13 @@ export const dictionary: Record<Language, Dictionary> = {
       copyEmail: 'Copy Email',
       copied: 'Email copied to clipboard!',
       directSocials: 'Professional Profiles',
+      emailTitle: 'Professional Email',
+      emailDescription:
+        'Reach out directly for technical inquiries, job opportunities, or collaborations.',
+      openMailClient: 'Or open in your default mail client →',
       resumeTitle: 'Curriculum Vitae',
+      resumeDescription:
+        'Download my professional profile as a PDF for archiving or offline review.',
       downloadEs: 'Download Resume (Spanish)',
       downloadEn: 'Download Resume (English)',
       locationLabel: 'Location',

@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useSyncExternalStore } from 'react';
 
 interface TypewriterProps {
   words: string[];
@@ -9,6 +9,14 @@ interface TypewriterProps {
   pauseDuration?: number;
   className?: string;
   cursorClassName?: string;
+}
+
+const REDUCED_MOTION_QUERY = '(prefers-reduced-motion: reduce)';
+
+function subscribeReducedMotion(callback: () => void) {
+  const mq = window.matchMedia(REDUCED_MOTION_QUERY);
+  mq.addEventListener('change', callback);
+  return () => mq.removeEventListener('change', callback);
 }
 
 export function Typewriter({
@@ -23,14 +31,14 @@ export function Typewriter({
   const [displayText, setDisplayText] = useState('');
   const [isDeleting, setIsDeleting] = useState(false);
 
-  useEffect(() => {
-    setDisplayText('');
-    setIsDeleting(false);
-    setWordIndex(0);
-  }, [words]);
+  const prefersReducedMotion = useSyncExternalStore(
+    subscribeReducedMotion,
+    () => window.matchMedia(REDUCED_MOTION_QUERY).matches,
+    () => false
+  );
 
   useEffect(() => {
-    if (!words || words.length === 0) return;
+    if (!words || words.length === 0 || prefersReducedMotion) return;
 
     const currentWord = words[wordIndex % words.length];
     let timeout: NodeJS.Timeout;
@@ -51,17 +59,24 @@ export function Typewriter({
           setDisplayText(currentWord.slice(0, displayText.length - 1));
         }, deletingSpeed);
       } else {
-        setIsDeleting(false);
-        setWordIndex((prev) => (prev + 1) % words.length);
+        timeout = setTimeout(() => {
+          setIsDeleting(false);
+          setWordIndex((prev) => (prev + 1) % words.length);
+        }, deletingSpeed);
       }
     }
 
     return () => clearTimeout(timeout);
-  }, [displayText, isDeleting, wordIndex, words, typingSpeed, deletingSpeed, pauseDuration]);
+  }, [displayText, isDeleting, wordIndex, words, typingSpeed, deletingSpeed, pauseDuration, prefersReducedMotion]);
+
+  if (prefersReducedMotion) {
+    return <span className={className}>{words?.[0] ?? ''}</span>;
+  }
 
   return (
     <span className={`inline-flex items-center ${className}`}>
-      <span>{displayText}</span>
+      <span aria-hidden="true">{displayText}</span>
+      <span className="sr-only">{words.join(', ')}</span>
       <span
         className={`inline-block w-[2px] h-[1em] ml-1 bg-accent animate-pulse ${cursorClassName}`}
         aria-hidden="true"
