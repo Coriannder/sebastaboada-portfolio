@@ -46,7 +46,7 @@ export function TerminalTabs() {
             aria-labelledby="terminal-tab-stack"
             className="space-y-1 text-zinc-300"
           >
-            <p className="text-zinc-500">{'// Modern Full Stack capabilities'}</p>
+            <p className="text-zinc-400">{'// Modern Full Stack capabilities'}</p>
             <p>
               <span className="text-accent">const</span> <span className="text-zinc-100">stack</span> = &#123;
             </p>

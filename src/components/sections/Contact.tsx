@@ -125,7 +125,7 @@ export function Contact({ t }: { t: Dictionary }) {
                 </div>
               </div>
 
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-[11px] font-mono text-zinc-400 dark:text-zinc-500 pt-1">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-[11px] font-mono text-zinc-400 dark:text-zinc-400 pt-1">
                 <div className="flex items-center gap-1.5">
                   <MapPin className="w-3 h-3 text-zinc-400" />
                   <span>{t.contact.locationValue}</span>

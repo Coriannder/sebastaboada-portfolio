@@ -70,7 +70,7 @@ export function Skills({ t }: { t: Dictionary }) {
                   </ul>
                 </div>
 
-                <div className="mt-6 pt-3 border-t border-zinc-100 dark:border-zinc-800/80 flex items-center justify-between text-[11px] font-mono text-zinc-400 dark:text-zinc-500">
+                <div className="mt-6 pt-3 border-t border-zinc-100 dark:border-zinc-800/80 flex items-center justify-between text-[11px] font-mono text-zinc-400 dark:text-zinc-400">
                   <span>0{idx + 1} / 05</span>
                   <span>PRODUCTION READY</span>
                 </div>

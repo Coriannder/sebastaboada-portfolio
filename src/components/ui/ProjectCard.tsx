@@ -21,7 +21,7 @@ export function ProjectCard({ project, index, t }: ProjectCardProps) {
       <div className="flex-1 min-w-0 space-y-3 order-2 md:order-1 w-full">
         {/* Header Badges */}
         <div className="flex flex-wrap items-center gap-2">
-          <span className="text-[11px] font-mono text-zinc-400 dark:text-zinc-500 uppercase tracking-wider">
+          <span className="text-[11px] font-mono text-zinc-400 dark:text-zinc-400 uppercase tracking-wider">
             0{index + 1}{' // '}{t.caseStudy}
           </span>
           <span className="px-2 py-0.5 rounded-md text-[10px] font-mono font-medium bg-zinc-100 dark:bg-zinc-800 text-zinc-700 dark:text-zinc-300 border border-zinc-200/80 dark:border-zinc-700/60">
@@ -96,7 +96,7 @@ export function ProjectCard({ project, index, t }: ProjectCardProps) {
 
             {/* Impact Highlights */}
             <div className="space-y-1.5">
-              <h4 className="text-[11px] font-mono font-semibold uppercase text-zinc-400 dark:text-zinc-500 tracking-wider">
+              <h4 className="text-[11px] font-mono font-semibold uppercase text-zinc-400 dark:text-zinc-400 tracking-wider">
                 {t.impactLabel}
               </h4>
               <ul className="space-y-1">
@@ -148,7 +148,7 @@ export function ProjectCard({ project, index, t }: ProjectCardProps) {
               </a>
             )}
             {project.isPrivate && !project.demoUrl && (
-              <span className="text-[11px] font-mono text-zinc-400 dark:text-zinc-500">
+              <span className="text-[11px] font-mono text-zinc-400 dark:text-zinc-400">
                 {t.privateRepo}
               </span>
             )}

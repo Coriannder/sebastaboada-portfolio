@@ -10,7 +10,7 @@ export function Footer({ t }: { t: Dictionary }) {
           <p className="text-xs text-zinc-600 dark:text-zinc-400">
             {t.footer.builtWith}
           </p>
-          <p className="text-[11px] font-mono text-zinc-400 dark:text-zinc-500">
+          <p className="text-[11px] font-mono text-zinc-400 dark:text-zinc-400">
             © {new Date().getFullYear()} Sebastián Taboada. {t.footer.rights}
           </p>
         </div>
