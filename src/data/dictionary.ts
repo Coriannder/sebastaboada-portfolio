@@ -197,7 +197,7 @@ export const dictionary: Record<Language, Dictionary> = {
           ],
           image: '/images/projects/grey-box-codex.svg',
           demoUrl: null,
-          codeUrl: 'https://github.com/Coriannder',
+          codeUrl: 'https://github.com/grey-box/Project_Codex',
           isPrivate: false,
         },
         {
@@ -586,7 +586,7 @@ export const dictionary: Record<Language, Dictionary> = {
           ],
           image: '/images/projects/grey-box-codex.svg',
           demoUrl: null,
-          codeUrl: 'https://github.com/Coriannder',
+          codeUrl: 'https://github.com/grey-box/Project_Codex',
           isPrivate: false,
         },
         {
