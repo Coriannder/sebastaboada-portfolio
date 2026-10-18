@@ -30,6 +30,7 @@ export function Typewriter({
   const [wordIndex, setWordIndex] = useState(0);
   const [displayText, setDisplayText] = useState('');
   const [isDeleting, setIsDeleting] = useState(false);
+  const [isPageVisible, setIsPageVisible] = useState(true);
 
   const prefersReducedMotion = useSyncExternalStore(
     subscribeReducedMotion,
@@ -38,7 +39,14 @@ export function Typewriter({
   );
 
   useEffect(() => {
-    if (!words || words.length === 0 || prefersReducedMotion) return;
+    const onVisibilityChange = () =>
+      setIsPageVisible(document.visibilityState === 'visible');
+    document.addEventListener('visibilitychange', onVisibilityChange);
+    return () => document.removeEventListener('visibilitychange', onVisibilityChange);
+  }, []);
+
+  useEffect(() => {
+    if (!words || words.length === 0 || prefersReducedMotion || !isPageVisible) return;
 
     const currentWord = words[wordIndex % words.length];
     let timeout: NodeJS.Timeout;
@@ -67,7 +75,7 @@ export function Typewriter({
     }
 
     return () => clearTimeout(timeout);
-  }, [displayText, isDeleting, wordIndex, words, typingSpeed, deletingSpeed, pauseDuration, prefersReducedMotion]);
+  }, [displayText, isDeleting, wordIndex, words, typingSpeed, deletingSpeed, pauseDuration, prefersReducedMotion, isPageVisible]);
 
   if (prefersReducedMotion) {
     return <span className={className}>{words?.[0] ?? ''}</span>;
