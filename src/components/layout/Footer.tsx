@@ -1,15 +1,8 @@
-'use client';
-
 import React from 'react';
 import type { Dictionary } from '@/types/content';
-import { ArrowUp } from 'lucide-react';
+import { BackToTop } from '@/components/ui/BackToTop';
 
 export function Footer({ t }: { t: Dictionary }) {
-
-  const scrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  };
-
   return (
     <footer className="py-12 border-t border-zinc-200 dark:border-zinc-800/80 bg-zinc-50/50 dark:bg-zinc-950">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 flex flex-col sm:flex-row items-center justify-between gap-6">
@@ -22,14 +15,7 @@ export function Footer({ t }: { t: Dictionary }) {
           </p>
         </div>
 
-        <button
-          onClick={scrollToTop}
-          className="flex items-center gap-1 px-3 py-1.5 text-xs font-mono text-zinc-500 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-zinc-100 rounded-lg hover:bg-zinc-100 dark:hover:bg-zinc-800 transition-colors"
-          title="Volver al inicio"
-        >
-          <span>Top</span>
-          <ArrowUp className="w-3.5 h-3.5" />
-        </button>
+        <BackToTop title={t.a11y.backToTop} />
       </div>
     </footer>
   );

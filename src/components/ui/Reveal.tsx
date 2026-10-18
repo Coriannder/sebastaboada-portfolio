@@ -1,7 +1,6 @@
 'use client';
 
-import React from 'react';
-import { motion, useReducedMotion } from 'framer-motion';
+import React, { useEffect, useRef, useState } from 'react';
 
 interface RevealProps {
   children: React.ReactNode;
@@ -10,29 +9,39 @@ interface RevealProps {
   as?: 'div' | 'article' | 'li' | 'section';
 }
 
-const motionTags = {
-  div: motion.div,
-  article: motion.article,
-  li: motion.li,
-  section: motion.section,
-} as const;
+export function Reveal({ children, className = '', delay = 0, as = 'div' }: RevealProps) {
+  const elementRef = useRef<HTMLElement | null>(null);
+  const [visible, setVisible] = useState(false);
 
-export function Reveal({ children, className, delay = 0, as = 'div' }: RevealProps) {
-  const reduceMotion = useReducedMotion();
-  const Tag = motionTags[as];
+  useEffect(() => {
+    const el = elementRef.current;
+    if (!el) return;
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setVisible(true);
+          observer.disconnect();
+        }
+      },
+      { rootMargin: '-60px' }
+    );
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
 
-  if (reduceMotion) {
-    const StaticTag = as;
-    return <StaticTag className={className}>{children}</StaticTag>;
-  }
+  const Tag = as;
 
   return (
     <Tag
-      className={className}
-      initial={{ opacity: 0, y: 20 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: '-60px' }}
-      transition={{ duration: 0.5, delay, ease: 'easeOut' }}
+      ref={(el: HTMLElement | null) => {
+        elementRef.current = el;
+      }}
+      className={`${className} transition-all duration-500 ease-out motion-reduce:transition-none ${
+        visible
+          ? 'opacity-100 translate-y-0'
+          : 'opacity-0 translate-y-5 motion-reduce:opacity-100 motion-reduce:translate-y-0'
+      }`}
+      style={delay ? { transitionDelay: `${delay}s` } : undefined}
     >
       {children}
     </Tag>

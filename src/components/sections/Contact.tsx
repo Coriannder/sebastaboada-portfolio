@@ -1,13 +1,10 @@
-'use client';
-
-import React, { useState } from 'react';
+import React from 'react';
 import type { Dictionary } from '@/types/content';
 import { SectionHeader } from '@/components/ui/SectionHeader';
 import { Reveal } from '@/components/ui/Reveal';
+import { CopyEmailButton } from '@/components/ui/CopyEmailButton';
 import {
   Mail,
-  Copy,
-  Check,
   FileDown,
   MapPin,
   Globe2,
@@ -16,19 +13,7 @@ import {
 import { GithubIcon, LinkedinIcon } from '@/components/ui/Icons';
 
 export function Contact({ t }: { t: Dictionary }) {
-  const [copied, setCopied] = useState(false);
   const email = 'contacto@sebastaboada.com.ar';
-
-  const handleCopyEmail = async () => {
-    try {
-      await navigator.clipboard.writeText(email);
-      setCopied(true);
-      setTimeout(() => setCopied(false), 2500);
-    } catch {
-      // Fallback
-      window.location.href = `mailto:${email}`;
-    }
-  };
 
   return (
     <section id="contact" className="py-20 border-t border-zinc-200/80 dark:border-zinc-800/80">
@@ -61,24 +46,11 @@ export function Contact({ t }: { t: Dictionary }) {
                 <span className="text-xs sm:text-sm font-mono text-zinc-800 dark:text-zinc-200 select-all truncate pr-2">
                   {email}
                 </span>
-                <button
-                  onClick={handleCopyEmail}
-                  className="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium rounded-lg bg-zinc-900 text-white dark:bg-zinc-100 dark:text-zinc-950 hover:opacity-90 transition-all shrink-0 cursor-pointer"
-                  title={t.contact.copyEmail}
-                  aria-live="polite"
-                >
-                  {copied ? (
-                    <>
-                      <Check className="w-3.5 h-3.5 text-accent" />
-                      <span>{t.contact.copied}</span>
-                    </>
-                  ) : (
-                    <>
-                      <Copy className="w-3.5 h-3.5" />
-                      <span>{t.contact.copyEmail}</span>
-                    </>
-                  )}
-                </button>
+                <CopyEmailButton
+                  email={email}
+                  copyLabel={t.contact.copyEmail}
+                  copiedLabel={t.contact.copied}
+                />
               </div>
 
               {/* Direct mailto link fallback */}

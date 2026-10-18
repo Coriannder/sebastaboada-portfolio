@@ -57,6 +57,7 @@ export interface Dictionary {
     toggleTheme: string;
     openMenu: string;
     closeMenu: string;
+    backToTop: string;
   };
   hero: {
     availableBadge: string;

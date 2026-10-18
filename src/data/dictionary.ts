@@ -19,6 +19,7 @@ export const dictionary: Record<Language, Dictionary> = {
       toggleTheme: 'Cambiar tema',
       openMenu: 'Abrir menú de navegación',
       closeMenu: 'Cerrar menú de navegación',
+      backToTop: 'Volver al inicio',
     },
     hero: {
       availableBadge: 'Disponible para proyectos y roles Full Stack / HealthTech',
@@ -417,6 +418,7 @@ export const dictionary: Record<Language, Dictionary> = {
       toggleTheme: 'Toggle theme',
       openMenu: 'Open navigation menu',
       closeMenu: 'Close navigation menu',
+      backToTop: 'Back to top',
     },
     hero: {
       availableBadge: 'Available for Full Stack & HealthTech roles',
