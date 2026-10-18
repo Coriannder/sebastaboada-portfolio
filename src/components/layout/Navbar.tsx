@@ -1,11 +1,9 @@
 'use client';
 
-import React, { useState, useEffect, useSyncExternalStore } from 'react';
-import { useTheme } from 'next-themes';
+import React, { useState, useEffect, useLayoutEffect } from 'react';
+import Link from 'next/link';
 import { Sun, Moon, Globe, Menu, X, FileText, ArrowUpRight } from 'lucide-react';
 import type { Dictionary, Language } from '@/types/content';
-
-const emptySubscribe = () => () => {};
 
 interface NavbarProps {
   lang: Language;
@@ -13,15 +11,32 @@ interface NavbarProps {
 }
 
 export function Navbar({ lang, t }: NavbarProps) {
-  const { theme, setTheme } = useTheme();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
-  const mounted = useSyncExternalStore(
-    emptySubscribe,
-    () => true,
-    () => false
-  );
+  const toggleTheme = () => {
+    const isDark = document.documentElement.classList.toggle('dark');
+    document.documentElement.style.colorScheme = isDark ? 'dark' : 'light';
+    try {
+      localStorage.setItem('theme', isDark ? 'dark' : 'light');
+    } catch {}
+  };
+
+  // React resets attributes it manages on <html> when the [lang] layout
+  // re-renders on locale navigation (and on Strict Mode remounts in dev),
+  // which would drop the `dark` class set by the inline script. Re-apply
+  // the persisted theme before paint.
+  useLayoutEffect(() => {
+    const isDark = (() => {
+      try {
+        return localStorage.getItem('theme') !== 'light';
+      } catch {
+        return true;
+      }
+    })();
+    document.documentElement.classList.toggle('dark', isDark);
+    document.documentElement.style.colorScheme = isDark ? 'dark' : 'light';
+  }, [lang]);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -91,7 +106,7 @@ export function Navbar({ lang, t }: NavbarProps) {
         {/* Action Controls (Lang, Theme, Resume) */}
         <div className="flex items-center gap-2">
           {/* Language Toggle */}
-          <a
+          <Link
             href={`/${otherLang}`}
             onClick={persistLangCookie}
             className="flex items-center gap-1 px-2 py-1 text-xs font-mono font-medium rounded-md border border-zinc-200 dark:border-zinc-800 hover:bg-zinc-100 dark:hover:bg-zinc-800/60 text-zinc-700 dark:text-zinc-300 transition-colors cursor-pointer"
@@ -100,23 +115,18 @@ export function Navbar({ lang, t }: NavbarProps) {
           >
             <Globe className="w-3.5 h-3.5" />
             <span className="uppercase">{lang}</span>
-          </a>
+          </Link>
 
           {/* Theme Toggle */}
-          {mounted && (
-            <button
-              type="button"
-              onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
-              className="p-1.5 rounded-md border border-zinc-200 dark:border-zinc-800 hover:bg-zinc-100 dark:hover:bg-zinc-800/60 text-zinc-700 dark:text-zinc-300 transition-colors cursor-pointer"
-              aria-label={t.a11y.toggleTheme}
-            >
-              {theme === 'dark' ? (
-                <Sun className="w-3.5 h-3.5 text-amber-400" />
-              ) : (
-                <Moon className="w-3.5 h-3.5 text-zinc-600" />
-              )}
-            </button>
-          )}
+          <button
+            type="button"
+            onClick={toggleTheme}
+            className="p-1.5 rounded-md border border-zinc-200 dark:border-zinc-800 hover:bg-zinc-100 dark:hover:bg-zinc-800/60 text-zinc-700 dark:text-zinc-300 transition-colors cursor-pointer"
+            aria-label={t.a11y.toggleTheme}
+          >
+            <Sun className="w-3.5 h-3.5 text-amber-400 hidden dark:block" />
+            <Moon className="w-3.5 h-3.5 text-zinc-600 dark:hidden" />
+          </button>
 
           {/* CV Button */}
           <a

@@ -1,7 +1,7 @@
 import type { Metadata, Viewport } from 'next';
 import { Geist, Geist_Mono } from 'next/font/google';
+import { InlineScript } from '@/components/inline-script';
 import '../globals.css';
-import { ThemeProvider } from '@/components/providers/ThemeProvider';
 import { dictionary } from '@/data/dictionary';
 import type { Language } from '@/types/content';
 
@@ -131,14 +131,17 @@ export default async function RootLayout({
       suppressHydrationWarning
       className={`${geistSans.variable} ${geistMono.variable} scroll-smooth`}
     >
-      <body className="min-h-screen bg-white text-zinc-900 dark:bg-zinc-950 dark:text-zinc-100 antialiased selection:bg-accent/20 selection:text-accent">
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(personJsonLd) }}
+      <head>
+        <InlineScript
+          html={`try{var d=localStorage.getItem('theme')!=='light';document.documentElement.classList.toggle('dark',d);document.documentElement.style.colorScheme=d?'dark':'light'}catch(e){document.documentElement.classList.add('dark')}`}
         />
-        <ThemeProvider attribute="class" defaultTheme="dark" enableSystem={false}>
-          {children}
-        </ThemeProvider>
+        <InlineScript
+          type="application/ld+json"
+          html={JSON.stringify(personJsonLd)}
+        />
+      </head>
+      <body className="min-h-screen bg-white text-zinc-900 dark:bg-zinc-950 dark:text-zinc-100 antialiased selection:bg-accent/20 selection:text-accent">
+        {children}
       </body>
     </html>
   );

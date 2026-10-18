@@ -3,7 +3,7 @@ import { NextRequest, NextResponse } from 'next/server';
 const LOCALES = ['es', 'en'];
 const DEFAULT_LOCALE = 'es';
 
-export function middleware(request: NextRequest) {
+export function proxy(request: NextRequest) {
   const { pathname } = request.nextUrl;
 
   if (LOCALES.some((l) => pathname === `/${l}` || pathname.startsWith(`/${l}/`))) {
