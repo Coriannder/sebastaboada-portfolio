@@ -389,6 +389,11 @@ export const dictionary: Record<Language, Dictionary> = {
       builtWith: 'Diseñado y construido por Sebastián Taboada con Next.js 15, TypeScript y Tailwind CSS.',
       rights: 'Todos los derechos reservados.',
     },
+    notFound: {
+      title: 'Página no encontrada',
+      description: 'La ruta que buscas no existe o fue movida.',
+      backHome: 'Volver al inicio',
+    },
   },
   en: {
     nav: {
@@ -777,6 +782,11 @@ export const dictionary: Record<Language, Dictionary> = {
     footer: {
       builtWith: 'Designed and built by Sebastián Taboada with Next.js 15, TypeScript, and Tailwind CSS.',
       rights: 'All rights reserved.',
+    },
+    notFound: {
+      title: 'Page not found',
+      description: 'The route you are looking for does not exist or was moved.',
+      backHome: 'Back to home',
     },
   },
 };

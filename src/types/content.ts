@@ -126,4 +126,9 @@ export interface Dictionary {
     builtWith: string;
     rights: string;
   };
+  notFound: {
+    title: string;
+    description: string;
+    backHome: string;
+  };
 }
