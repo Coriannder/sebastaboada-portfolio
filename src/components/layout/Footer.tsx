@@ -1,11 +1,10 @@
 'use client';
 
 import React from 'react';
-import { useLanguage } from '@/context/LanguageContext';
+import type { Dictionary } from '@/types/content';
 import { ArrowUp } from 'lucide-react';
 
-export function Footer() {
-  const { t } = useLanguage();
+export function Footer({ t }: { t: Dictionary }) {
 
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });

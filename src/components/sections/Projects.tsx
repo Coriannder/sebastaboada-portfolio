@@ -1,12 +1,9 @@
-'use client';
-
 import React from 'react';
-import { useLanguage } from '@/context/LanguageContext';
+import type { Dictionary } from '@/types/content';
 import { ProjectCard } from '@/components/ui/ProjectCard';
 import { FolderGit2 } from 'lucide-react';
 
-export function Projects() {
-  const { t } = useLanguage();
+export function Projects({ t }: { t: Dictionary }) {
 
   return (
     <section id="projects" className="py-20 border-t border-zinc-200/80 dark:border-zinc-800/80">
@@ -28,7 +25,7 @@ export function Projects() {
         {/* Projects List (Single column) */}
         <div className="space-y-6">
           {t.projects.items.map((project, idx) => (
-            <ProjectCard key={project.id} project={project} index={idx} />
+            <ProjectCard key={project.id} project={project} index={idx} t={t} />
           ))}
         </div>
       </div>

@@ -1,4 +1,5 @@
 import { ImageResponse } from 'next/og';
+import { dictionary } from '@/data/dictionary';
 
 export const alt = 'Sebastián Taboada — Biomedical Engineer & Full Stack Developer';
 export const size = {
@@ -7,7 +8,14 @@ export const size = {
 };
 export const contentType = 'image/png';
 
-export default function OpengraphImage() {
+export default async function OpengraphImage({
+  params,
+}: {
+  params: Promise<{ lang: string }>;
+}) {
+  const { lang } = await params;
+  const t = dictionary[lang === 'en' ? 'en' : 'es'];
+
   return new ImageResponse(
     (
       <div
@@ -62,7 +70,7 @@ export default function OpengraphImage() {
               lineHeight: 1.05,
             }}
           >
-            Sebastián Taboada
+            {t.hero.name}
           </div>
           <div
             style={{
@@ -72,7 +80,7 @@ export default function OpengraphImage() {
               fontFamily: 'monospace',
             }}
           >
-            Biomedical Engineer & Full Stack Developer
+            {t.hero.title}
           </div>
           <div
             style={{
@@ -104,7 +112,7 @@ export default function OpengraphImage() {
               background: '#10b981',
             }}
           />
-          Available for Full Stack & HealthTech roles
+          {t.hero.availableBadge}
         </div>
       </div>
     ),

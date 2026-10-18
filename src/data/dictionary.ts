@@ -2,6 +2,10 @@ import { Dictionary, Language } from '@/types/content';
 
 export const dictionary: Record<Language, Dictionary> = {
   es: {
+    meta: {
+      description:
+        'Portfolio profesional de Sebastián Taboada. Especialista en HealthTech, arquitecturas limpias de backend con TypeScript/Node/MySQL, y agentes de IA con Model Context Protocol (MCP).',
+    },
     nav: {
       skills: 'Stack',
       projects: 'Proyectos',
@@ -396,6 +400,10 @@ export const dictionary: Record<Language, Dictionary> = {
     },
   },
   en: {
+    meta: {
+      description:
+        'Professional portfolio of Sebastián Taboada. HealthTech specialist, clean backend architectures with TypeScript/Node/MySQL, and AI agents with Model Context Protocol (MCP).',
+    },
     nav: {
       skills: 'Stack',
       projects: 'Projects',

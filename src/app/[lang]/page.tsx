@@ -1,7 +1,6 @@
-'use client';
-
-import React from 'react';
-import { useLanguage } from '@/context/LanguageContext';
+import { notFound } from 'next/navigation';
+import { dictionary } from '@/data/dictionary';
+import type { Language } from '@/types/content';
 import { Navbar } from '@/components/layout/Navbar';
 import { Hero } from '@/components/sections/Hero';
 import { Skills } from '@/components/sections/Skills';
@@ -10,8 +9,16 @@ import { Experience } from '@/components/sections/Experience';
 import { Contact } from '@/components/sections/Contact';
 import { Footer } from '@/components/layout/Footer';
 
-export default function Home() {
-  const { t } = useLanguage();
+export default async function Home({
+  params,
+}: {
+  params: Promise<{ lang: string }>;
+}) {
+  const { lang } = await params;
+  if (lang !== 'es' && lang !== 'en') notFound();
+
+  const locale: Language = lang;
+  const t = dictionary[locale];
 
   return (
     <div className="relative min-h-screen flex flex-col justify-between">
@@ -21,15 +28,15 @@ export default function Home() {
       >
         {t.a11y.skipToContent}
       </a>
-      <Navbar />
+      <Navbar lang={locale} t={t} />
       <main id="main" className="flex-1">
-        <Hero />
-        <Skills />
-        <Projects />
-        <Experience />
-        <Contact />
+        <Hero lang={locale} t={t} />
+        <Skills t={t} />
+        <Projects t={t} />
+        <Experience t={t} />
+        <Contact t={t} />
       </main>
-      <Footer />
+      <Footer t={t} />
     </div>
   );
 }

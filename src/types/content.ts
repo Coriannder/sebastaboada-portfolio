@@ -41,6 +41,9 @@ export interface SkillCategory {
 }
 
 export interface Dictionary {
+  meta: {
+    description: string;
+  };
   nav: {
     skills: string;
     projects: string;

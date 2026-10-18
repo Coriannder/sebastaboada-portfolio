@@ -1,11 +1,8 @@
-'use client';
-
 import React from 'react';
-import { useLanguage } from '@/context/LanguageContext';
+import type { Dictionary } from '@/types/content';
 import { Briefcase, GraduationCap, CheckCircle2, Calendar, MapPin } from 'lucide-react';
 
-export function Experience() {
-  const { t } = useLanguage();
+export function Experience({ t }: { t: Dictionary }) {
 
   return (
     <section id="experience" className="py-20 border-t border-zinc-200/80 dark:border-zinc-800/80">

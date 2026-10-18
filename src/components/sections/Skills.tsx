@@ -1,7 +1,5 @@
-'use client';
-
 import React from 'react';
-import { useLanguage } from '@/context/LanguageContext';
+import type { Dictionary } from '@/types/content';
 import {
   Server,
   Database,
@@ -20,8 +18,7 @@ const categoryIcons = [
   Activity,  // HealthTech
 ];
 
-export function Skills() {
-  const { t } = useLanguage();
+export function Skills({ t }: { t: Dictionary }) {
 
   return (
     <section id="skills" className="py-20 border-t border-zinc-200/80 dark:border-zinc-800/80">

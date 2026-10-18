@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
-import { useLanguage } from '@/context/LanguageContext';
+import type { Dictionary } from '@/types/content';
 import {
   Mail,
   Copy,
@@ -13,8 +13,7 @@ import {
 } from 'lucide-react';
 import { GithubIcon, LinkedinIcon } from '@/components/ui/Icons';
 
-export function Contact() {
-  const { t } = useLanguage();
+export function Contact({ t }: { t: Dictionary }) {
   const [copied, setCopied] = useState(false);
   const email = 'contacto@sebastaboada.com.ar';
 

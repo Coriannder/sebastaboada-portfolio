@@ -2,17 +2,16 @@
 
 import React, { useState } from 'react';
 import Image from 'next/image';
-import { ProjectItem } from '@/types/content';
-import { useLanguage } from '@/context/LanguageContext';
+import { Dictionary, ProjectItem } from '@/types/content';
 import { ExternalLink, Lock, CheckCircle, ArrowRight, ChevronDown } from 'lucide-react';
 
 interface ProjectCardProps {
   project: ProjectItem;
   index: number;
+  t: Dictionary;
 }
 
-export function ProjectCard({ project, index }: ProjectCardProps) {
-  const { t } = useLanguage();
+export function ProjectCard({ project, index, t }: ProjectCardProps) {
   const [expanded, setExpanded] = useState(false);
   const detailsId = `project-details-${project.id}`;
 

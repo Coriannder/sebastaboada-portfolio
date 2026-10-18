@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react';
 import Image from 'next/image';
-import { useLanguage } from '@/context/LanguageContext';
+import type { Dictionary, Language } from '@/types/content';
 import {
   ArrowDown,
   Mail,
@@ -17,8 +17,12 @@ import { GithubIcon, LinkedinIcon } from '@/components/ui/Icons';
 import { Typewriter } from '@/components/ui/Typewriter';
 import profilePic from '@/../public/images/profile.jpg';
 
-export function Hero() {
-  const { language, t } = useLanguage();
+interface HeroProps {
+  lang: Language;
+  t: Dictionary;
+}
+
+export function Hero({ lang, t }: HeroProps) {
   const [activeTab, setActiveTab] = useState<'stack' | 'arch' | 'status'>('stack');
 
   return (
@@ -48,7 +52,7 @@ export function Hero() {
                 <div className="mt-2.5 text-base sm:text-xl font-medium font-mono min-h-[1.75rem] flex items-center gap-2">
                   <span className="text-accent font-bold">&gt;</span>
                   <Typewriter
-                    key={language}
+                    key={lang}
                     words={t.hero.roles || [t.hero.title]}
                     className="text-accent font-semibold"
                   />
@@ -80,7 +84,7 @@ export function Hero() {
               </a>
 
               <a
-                href={language === 'es' ? '/docs/cv-sebas-taboada-es.pdf' : '/docs/cv-sebas-taboada-en.pdf'}
+                href={lang === 'es' ? '/docs/cv-sebas-taboada-es.pdf' : '/docs/cv-sebas-taboada-en.pdf'}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 px-3.5 py-2.5 text-xs sm:text-sm font-medium rounded-xl text-zinc-600 dark:text-zinc-400 hover:text-zinc-950 dark:hover:text-zinc-100 hover:bg-zinc-100 dark:hover:bg-zinc-800/50 transition-colors"

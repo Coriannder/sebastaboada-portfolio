@@ -2,13 +2,17 @@
 
 import React, { useState, useEffect, useSyncExternalStore } from 'react';
 import { useTheme } from 'next-themes';
-import { useLanguage } from '@/context/LanguageContext';
 import { Sun, Moon, Globe, Menu, X, FileText, ArrowUpRight } from 'lucide-react';
+import type { Dictionary, Language } from '@/types/content';
 
 const emptySubscribe = () => () => {};
 
-export function Navbar() {
-  const { language, setLanguage, t } = useLanguage();
+interface NavbarProps {
+  lang: Language;
+  t: Dictionary;
+}
+
+export function Navbar({ lang, t }: NavbarProps) {
   const { theme, setTheme } = useTheme();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
@@ -35,6 +39,12 @@ export function Navbar() {
     window.addEventListener('keydown', handleKeyDown);
     return () => window.removeEventListener('keydown', handleKeyDown);
   }, [mobileMenuOpen]);
+
+  const otherLang: Language = lang === 'es' ? 'en' : 'es';
+
+  const persistLangCookie = () => {
+    document.cookie = `portfolio_lang=${otherLang};path=/;max-age=31536000;samesite=lax`;
+  };
 
   const navLinks = [
     { href: '#skills', label: t.nav.skills },
@@ -81,16 +91,16 @@ export function Navbar() {
         {/* Action Controls (Lang, Theme, Resume) */}
         <div className="flex items-center gap-2">
           {/* Language Toggle */}
-          <button
-            type="button"
-            onClick={() => setLanguage(language === 'es' ? 'en' : 'es')}
+          <a
+            href={`/${otherLang}`}
+            onClick={persistLangCookie}
             className="flex items-center gap-1 px-2 py-1 text-xs font-mono font-medium rounded-md border border-zinc-200 dark:border-zinc-800 hover:bg-zinc-100 dark:hover:bg-zinc-800/60 text-zinc-700 dark:text-zinc-300 transition-colors cursor-pointer"
             aria-label={t.a11y.toggleLanguage}
-            title={language === 'es' ? 'Switch to English' : 'Cambiar a Español'}
+            title={lang === 'es' ? 'Switch to English' : 'Cambiar a Español'}
           >
             <Globe className="w-3.5 h-3.5" />
-            <span className="uppercase">{language}</span>
-          </button>
+            <span className="uppercase">{lang}</span>
+          </a>
 
           {/* Theme Toggle */}
           {mounted && (
@@ -110,7 +120,7 @@ export function Navbar() {
 
           {/* CV Button */}
           <a
-            href={language === 'es' ? '/docs/cv-sebas-taboada-es.pdf' : '/docs/cv-sebas-taboada-en.pdf'}
+            href={lang === 'es' ? '/docs/cv-sebas-taboada-es.pdf' : '/docs/cv-sebas-taboada-en.pdf'}
             target="_blank"
             rel="noopener noreferrer"
             className="hidden sm:inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium rounded-md bg-zinc-900 text-white dark:bg-zinc-100 dark:text-zinc-950 hover:opacity-90 transition-opacity shadow-xs"
@@ -151,7 +161,7 @@ export function Navbar() {
           </nav>
           <div className="pt-2 border-t border-zinc-200/70 dark:border-zinc-800/70">
             <a
-              href={language === 'es' ? '/docs/cv-sebas-taboada-es.pdf' : '/docs/cv-sebas-taboada-en.pdf'}
+              href={lang === 'es' ? '/docs/cv-sebas-taboada-es.pdf' : '/docs/cv-sebas-taboada-en.pdf'}
               target="_blank"
               rel="noopener noreferrer"
               onClick={() => setMobileMenuOpen(false)}
